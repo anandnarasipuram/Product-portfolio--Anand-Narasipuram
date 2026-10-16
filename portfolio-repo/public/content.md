@@ -248,7 +248,7 @@
 [credentials-09] Energy Manager
 [credentials-10] TÜV Rheinland. View on LinkedIn  (*)
 [credentials-11] Product Management LevelUp
-[credentials-12] Product Academy. View on LinkedIn  (*)
+[credentials-12] Product Academy, Zurich, Switzerland. Certification completed August to December 2024. View on LinkedIn  (*)
 [credentials-13] MSc ENTECH
 [credentials-14] KIT Karlsruhe and IST Lisbon, with an EU InnoEnergy scholarship (€20k).
 [credentials-15] Accelerators
