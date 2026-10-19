@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Portfolio von Anand Narasipuram, Senior Product Manager für IoT und Energie: SmartHome-Konfigurator (Smartivate), EcoMate (Uponor), Intelligent Heating Control (E.ON One), Zertifikate, Auszeichnungen und KI-Projekte.">
+<meta property="og:title" content="Anand Narasipuram">
+<meta property="og:description" content="Portfolio von Anand Narasipuram, Senior Product Manager für IoT und Energie: SmartHome-Konfigurator (Smartivate), EcoMate (Uponor), Intelligent Heating Control (E.ON One), Zertifikate, Auszeichnungen und KI-Projekte.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:image" content="https://anandnarasipuram.an-e5e.workers.dev/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://anandnarasipuram.an-e5e.workers.dev/og-image.jpg">
+<link rel="alternate" hreflang="en" href="https://anandnarasipuram.an-e5e.workers.dev/">
+<link rel="alternate" hreflang="de" href="https://anandnarasipuram.an-e5e.workers.dev/de/">
+<title>Anand Narasipuram</title>
+<link rel="preload" href="../fonts/dm-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "DM Sans"; src: url("../fonts/dm-sans-var.woff2") format("woff2"); font-weight: 100 1000; font-style: normal; font-display: swap; }
+@font-face { font-family: "DM Mono"; src: url("../fonts/dm-mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "DM Mono"; src: url("../fonts/dm-mono-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+/* Layout concept: an engineering drawing sheet. A sticky tab bar, one panel per tab,
+   ruled sections, isometric line figures (Hairline) as the only illustration,
+   and a drawing-style title block as the contact. */
+:root {
+  --bg: #f6f4fa;
+  --fg: #231942;
+  --muted: #625a80;
+  --rule: #d6d0e4;
+  --surface: #ebe7f3;
+  --accent: #6d34d6; --glow: rgba(109,52,214,.45); --core: #8a5cf0;
+  --fig-hi: #231942;
+  --fig-edge: #7e76a0;
+  --fig-mid: #b9b3d1;
+  --fig-lo: #dcd8ea;
+  --display: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --note: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --gutter: clamp(16px, 4vw, 48px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #120c24; --fg: #ece8fa; --muted: #a39bc4; --rule: #2c2348; --surface: #1a1332;
+    --accent: #b794ff; --glow: rgba(183,148,255,.85); --core: #f3edff;
+    --fig-hi: #ece8fa; --fig-edge: #8b82b0; --fig-mid: #473f6c; --fig-lo: #231b3d;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #120c24; --fg: #ece8fa; --muted: #a39bc4; --rule: #2c2348; --surface: #1a1332;
+  --accent: #b794ff; --glow: rgba(183,148,255,.85); --core: #f3edff;
+  --fig-hi: #ece8fa; --fig-edge: #8b82b0; --fig-mid: #473f6c; --fig-lo: #231b3d;
+  color-scheme: dark;
+}
+
+
+:root[data-theme="light"] { color-scheme: light; }
+
+
+/* picker */
+.picker .gear { display: flex; align-items: center; gap: 7px; margin-left: auto; background: var(--bg); color: var(--fg); border: 1px solid var(--rule); padding: 7px 10px; font: inherit; cursor: pointer; }
+.picker .gear svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
+.picker .gear:hover, .picker .gear[aria-expanded="true"] { border-color: var(--accent); color: var(--accent); }
+.picker .pop { position: absolute; right: 0; bottom: calc(100% + 8px); width: max-content; background: var(--bg); border: 1px solid var(--rule); padding: 12px; box-shadow: 0 6px 24px rgba(0,0,0,.18); }
+.picker .pop[hidden] { display: none; }
+.cvhero { display: block; margin-top: 14px; font-size: .9375rem; color: var(--muted); } .cvhero a, footer a { color: var(--accent); font-weight: 600; }
+.cvdl { margin-top: 18px; font-size: .9375rem; color: var(--muted); } .cvdl a { color: var(--accent); font-weight: 600; }
+.picker .pop .cvl { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--rule); } .picker .pop .cvl a { color: var(--accent); }
+.picker .pop .lab { margin: 0 0 8px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; font-size: .6875rem; }
+.picker { position: fixed; right: 16px; bottom: 16px; z-index: 40; font-family: var(--note); font-size: 0.75rem; }
+.picker .opt { display: flex; align-items: center; gap: 10px; background: none; color: var(--fg); border: 1px solid var(--rule); padding: 7px 9px; cursor: pointer; font: inherit; text-align: left; }
+.picker .opt[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.picker .modes { display: flex; background: var(--bg); } .picker .modes .opt { flex: 1; justify-content: center; } .picker .modes .opt + .opt { margin-left: -1px; }
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  padding-inline: var(--gutter);
+  padding-block: 0;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
+a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 0.2em; text-decoration-thickness: 1.5px; }
+a:hover { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.1; }
+p { margin: 0; max-width: 62ch; }
+.wrap { max-width: 1120px; margin-inline: auto; }
+
+/* sticky tab bar: always visible, full width, content scrolls under it */
+.bar-wrap {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 30;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+}
+.bar { display: flex; align-items: stretch; gap: 0 clamp(16px, 2.4vw, 32px); }
+.bar .name { flex: none; align-self: center; font-weight: 800; font-size: clamp(1.25rem, 1.8vw, 1.6rem); font-stretch: 112%; letter-spacing: -0.005em; line-height: 1.1; text-decoration: none; padding-block: 12px; }
+.tabs { position: relative; display: flex; margin-left: auto; flex: 0 1 auto; min-width: 0; overflow-x: auto; scrollbar-width: none; counter-reset: sheet; border-left: 1px solid var(--rule); }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs a {
+  counter-increment: sheet;
+  flex: none; position: relative;
+  display: grid; grid-template-columns: auto 1fr; align-items: center; row-gap: 5px;
+  min-width: 88px; padding: 10px 12px 12px; white-space: nowrap; text-decoration: none;
+  color: var(--muted); border-right: 1px solid var(--rule);
+  font-size: 0.8125rem; font-weight: 500; line-height: 1.1;
+}
+.tabs a::before { content: counter(sheet, decimal-leading-zero); justify-self: end; font-family: var(--note); font-size: 0.625rem; letter-spacing: 0.08em; opacity: 0.8; }
+.tabs a svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; grid-row: 1; grid-column: 1; transition: transform 0.25s ease; }
+.tabs a span { grid-column: 1 / -1; }
+.tabs a small { display: block; font-size: 0.625rem; font-weight: 400; letter-spacing: 0.02em; color: var(--muted); margin-top: 1px; }
+.tabs a[aria-current="page"] small { color: var(--accent); }
+h2 .co { font-weight: 400; color: var(--muted); }
+.tabs a::after { content: ""; position: absolute; inset: 4px; pointer-events: none; opacity: 0; transition: opacity 0.2s;
+  background:
+    linear-gradient(var(--accent), var(--accent)) 0 0 / 7px 1px no-repeat, linear-gradient(var(--accent), var(--accent)) 0 0 / 1px 7px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) 100% 0 / 7px 1px no-repeat, linear-gradient(var(--accent), var(--accent)) 100% 0 / 1px 7px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) 0 100% / 7px 1px no-repeat, linear-gradient(var(--accent), var(--accent)) 0 100% / 1px 7px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) 100% 100% / 7px 1px no-repeat, linear-gradient(var(--accent), var(--accent)) 100% 100% / 1px 7px no-repeat; }
+.tabs a:hover { color: var(--fg); }
+.tabs a:hover::after, .tabs a:focus-visible::after { opacity: 0.55; }
+.tabs a:hover svg { transform: translateY(-2px) scale(1.08); }
+.tabs a[aria-current="page"] { color: var(--accent); font-weight: 600; }
+.tabs a[aria-current="page"]::after { opacity: 1; }
+.dim { position: absolute; left: 0; bottom: 0; height: 9px; width: 0; pointer-events: none; transition: transform 0.35s cubic-bezier(.3,.7,.2,1), width 0.35s cubic-bezier(.3,.7,.2,1); }
+.dim::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--accent); }
+.dim::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 9px; border-inline: 1px solid var(--accent); }
+@media (max-width: 1100px) {
+  .bar { flex-wrap: wrap; }
+  .bar .name { width: 100%; padding-block: 10px 8px; }
+  .tabs { margin-left: 0; width: calc(100% + var(--gutter) * 2); margin-inline: calc(var(--gutter) * -1); border-left: 0; border-top: 1px solid var(--rule); }
+  .tabs a { min-width: 84px; }
+}
+@media (prefers-reduced-motion: reduce) { .jchaps .head { animation: none; } .dim, .tabs a svg { transition: none; } }
+
+
+/* journey: alternating zig-zag along a spine, each step zooms out one level */
+.cue { margin-top: 34px; display: inline-flex; align-items: center; gap: 12px; font-family: var(--note); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+.cue i { width: 1px; height: 34px; background: var(--rule); position: relative; overflow: hidden; }
+.cue i::after { content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--accent); animation: drip 1.8s ease-in-out infinite; }
+@keyframes drip { to { top: 110%; } }
+.jhead { max-width: 52rem; }
+.jhead .kick, .cno { font-family: var(--note); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.jhead h2 { margin-top: 12px; }
+
+.jchaps { list-style: none; margin: clamp(28px, 4vw, 48px) 0 0; padding: 0; position: relative; }
+.jchaps::before, .jchaps::after { content: ""; position: absolute; left: 50%; top: 0; width: 1px; height: 100%; background: var(--rule); }
+.jchaps::after { width: 3px; margin-left: -1px; background: linear-gradient(to bottom, var(--accent), var(--core)); transform-origin: top; transform: scaleY(var(--p, 0)); box-shadow: 0 0 6px var(--glow), 0 0 16px var(--glow); border-radius: 2px; }
+.jchaps .head { position: absolute; left: 50%; top: calc(var(--p, 0) * 100%); width: 9px; height: 9px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--core); box-shadow: 0 0 0 3px var(--glow), 0 0 14px 4px var(--glow), 0 0 34px 10px var(--glow); z-index: 3; pointer-events: none; opacity: calc(var(--p, 0) * 40); animation: beat 2.2s ease-in-out infinite; }
+@keyframes beat { 50% { box-shadow: 0 0 0 5px var(--glow), 0 0 20px 7px var(--glow), 0 0 44px 14px var(--glow); } }
+.chap { position: relative; display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(56px, 9vw, 130px); align-items: center; padding-block: clamp(36px, 6vw, 80px); }
+.chap::before { content: ""; position: absolute; left: calc(50% - 6px); top: 50%; width: 12px; height: 12px; background: var(--bg); border: 1px solid var(--fig-edge); transform: translateY(-50%) rotate(45deg); transition: background 0.4s, border-color 0.4s; z-index: 2; }
+.chap.on::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 10px var(--glow), 0 0 22px var(--glow); }
+.chap.on .jbox { border-color: color-mix(in srgb, var(--accent) 45%, var(--rule)); box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent), 0 0 28px -8px var(--glow); transition: box-shadow .5s, border-color .5s; }
+.jbox { grid-row: 1; grid-column: 1; position: relative; aspect-ratio: 5 / 4.4; border: 1px solid var(--rule); background: var(--bg); overflow: hidden; --z: 2; --rot: 0deg; }
+.jtext { grid-row: 1; grid-column: 2; min-width: 0; }
+.chap:nth-child(even) .jbox { grid-column: 2; }
+.chap:nth-child(even) .jtext { grid-column: 1; }
+.rings { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.rings svg { width: 150%; height: 150%; flex: none; transform: scale(var(--z)) rotate(var(--rot)); will-change: transform; }
+.rings circle { fill: none; stroke: var(--fig-mid); stroke-width: 1; vector-effect: non-scaling-stroke; opacity: 0.55; }
+.rings circle.tk { stroke: var(--fig-edge); stroke-dasharray: 0.5 2.4; stroke-width: 3; opacity: 0.5; }
+.rings circle.hot { stroke: var(--accent); opacity: 0.9; stroke-dasharray: 1 3; }
+.rings line { stroke: var(--fig-lo); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.jfig { position: absolute; inset: 6% 5% 24%; display: grid; place-items: center; }
+.jfig .fig { max-width: 100%; max-height: 100%; }
+.jread { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px 16px 14px; border-top: 1px solid var(--rule); background: var(--bg); font-family: var(--note); font-size: 0.75rem; }
+.jread .row1 { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.jread .row1 b { color: var(--accent); font-weight: 500; }
+.ruler { position: relative; height: 22px; margin-top: 8px; }
+.ruler::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 1px; background: var(--fig-edge); }
+.ruler span { position: absolute; top: 2px; width: 1px; height: 9px; background: var(--fig-edge); font-size: 0; }
+.ruler span::after { content: attr(data-l); position: absolute; top: 12px; left: 0; transform: translateX(-50%); font-size: 0.625rem; color: var(--muted); white-space: nowrap; }
+.ruler span:first-child::after { transform: none; } .ruler span:last-child::after { transform: translateX(-100%); }
+.ruler .mk { position: absolute; top: 0; width: 11px; height: 11px; margin-left: -5px; border: 1px solid var(--accent); background: var(--bg); transform: rotate(45deg); }
+.ruler .mk { box-shadow: 0 0 8px var(--glow), 0 0 18px var(--glow); }
+.ruler .mk::after { content: ""; position: absolute; inset: 3px; background: var(--core); }
+.ruler::after { content: ""; position: absolute; left: 0; top: 6px; height: 2px; width: var(--fill, 0%); background: var(--accent); box-shadow: 0 0 8px var(--glow); }
+.cno { display: block; }
+.jtext h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-stretch: 110%; font-weight: 800; letter-spacing: -0.015em; margin-top: 12px; }
+.jtext p { margin-top: 16px; }
+.jtext .more { display: inline-block; margin-top: 22px; font-weight: 600; }
+.jstat { display: flex; flex-wrap: wrap; gap: 14px 26px; margin: 24px 0 0; }
+.jstat div { min-width: 6rem; }
+.jstat dt { font-family: var(--display); font-stretch: 112%; font-weight: 800; font-size: clamp(1.6rem, 2.7vw, 2.3rem); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.jstat dt.rust { color: var(--accent); }
+.jstat dd { margin: 6px 0 0; font-size: 0.875rem; color: var(--muted); max-width: 15ch; line-height: 1.35; }
+.impact { border-left: 2px solid var(--accent); padding-left: 14px; color: var(--fg); }
+.impact b { font-family: var(--note); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 2px; }
+
+.js .jbox, .js .jtext { opacity: 0; transition: opacity 0.8s ease, transform 1s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.js .chap:nth-child(odd) .jbox { transform: translateX(-56px) scale(0.94); }
+.js .chap:nth-child(odd) .jtext { transform: translateX(56px); }
+.js .chap:nth-child(even) .jbox { transform: translateX(56px) scale(0.94); }
+.js .chap:nth-child(even) .jtext { transform: translateX(-56px); }
+.js .chap.seen .jbox, .js .chap.seen .jtext { opacity: 1; transform: none; }
+.js .chap.seen .jtext { transition-delay: 0.18s; }
+.why { margin-top: clamp(40px, 7vw, 96px); padding-top: clamp(32px, 5vw, 64px); border-top: 1px solid var(--rule); position: relative; }
+.why::before { content: ""; position: absolute; top: -1px; left: 0; height: 2px; width: 100%; background: var(--accent); transform-origin: left; transform: scaleX(0); transition: transform 1.4s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.why.seen::before { transform: scaleX(1); }
+.why .kick { font-family: var(--note); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.why blockquote { margin: 16px 0 0; font-family: var(--display); font-stretch: 108%; font-weight: 700; font-size: clamp(1.5rem, 3.4vw, 2.6rem); line-height: 1.2; letter-spacing: -0.015em; max-width: 30ch; text-wrap: balance; }
+.why .sig { margin-top: 18px; font-family: var(--note); font-size: 0.8125rem; color: var(--muted); }
+
+@media (max-width: 900px) {
+  .jread .row1 span:nth-child(2) { display: none; }
+  .jchaps { padding-left: 22px; }
+  .jchaps::before, .jchaps::after { left: 0; }
+  .jchaps .head { left: 0; }
+  .chap { grid-template-columns: 1fr; row-gap: 22px; }
+  .chap::before { left: -28px; top: 20px; transform: rotate(45deg); }
+  .chap .jbox, .chap:nth-child(even) .jbox { grid-column: 1; grid-row: 1; aspect-ratio: 5 / 4; }
+  .chap .jtext, .chap:nth-child(even) .jtext { grid-column: 1; grid-row: 2; }
+  .js .chap .jbox, .js .chap:nth-child(odd) .jbox, .js .chap:nth-child(even) .jbox { transform: translateY(24px); }
+  .js .chap .jtext, .js .chap:nth-child(odd) .jtext, .js .chap:nth-child(even) .jtext { transform: translateY(24px); }
+  .js .chap.seen .jbox, .js .chap.seen .jtext { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .jbox, .js .jtext, .why::before, .cue i::after { transition: none; animation: none; }
+  .js .jbox, .js .jtext { opacity: 1 !important; transform: none !important; }
+}
+
+
+/* impact widgets */
+.imp { margin-top: clamp(48px, 7vw, 96px); padding-top: clamp(28px, 4vw, 48px); border-top: 1px solid var(--rule); }
+.imp .kick { font-family: var(--note); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.imp h2 { margin-top: 12px; }
+.igrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 28px; border: 1px solid var(--rule); }
+.icard { padding: clamp(18px, 2.6vw, 30px); border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); position: relative; min-width: 0; }
+.icard:nth-child(even) { border-right: 0; } .icard:nth-last-child(-n+2) { border-bottom: 0; }
+.ibadge { display: inline-block; font-family: var(--note); font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--rule); color: var(--muted); }
+.ibadge.m { border-color: var(--accent); color: var(--accent); }
+.icard .src { display: block; margin-top: 14px; font-family: var(--note); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; }
+.ibig { display: flex; align-items: baseline; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.ibig b { font-family: var(--display); font-stretch: 112%; font-weight: 800; font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.ibig span { font-family: var(--note); font-size: 0.875rem; color: var(--muted); }
+.icard p { margin-top: 12px; font-size: 0.9688rem; }
+.icard .sub { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 16px 0 0; padding: 0; list-style: none; font-size: 0.875rem; color: var(--muted); }
+.icard .sub b { color: var(--fg); font-weight: 600; }
+.ring { position: absolute; right: clamp(14px, 2vw, 24px); top: clamp(14px, 2vw, 24px); width: 64px; height: 64px; }
+.ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring circle { fill: none; stroke-width: 3; }
+.ring .bg { stroke: var(--rule); } .ring .fg { stroke: var(--accent); stroke-linecap: butt; transition: stroke-dashoffset 1.4s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.ring span { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--note); font-size: 0.6875rem; }
+.eqs { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 18px; }
+.eqs li { display: grid; grid-template-columns: 64px 1fr; gap: 18px; align-items: center; }
+.eqs svg { width: 64px; height: 56px; fill: none; stroke: var(--accent); stroke-width: 1.25; stroke-linejoin: round; stroke-linecap: round; }
+.eqs b { display: block; font-family: var(--display); font-stretch: 112%; font-weight: 800; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.05; font-variant-numeric: tabular-nums; }
+.eqs span { font-size: 0.9375rem; color: var(--muted); }
+.sim label { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; margin-top: 14px; font-size: 0.875rem; color: var(--muted); }
+.sim label output { color: var(--fg); font-family: var(--note); font-size: 0.8125rem; }
+.sim input[type=range] { grid-column: 1 / -1; width: 100%; accent-color: var(--accent); }
+.inote { margin-top: 18px; font-family: var(--note); font-size: 0.75rem; color: var(--muted); max-width: 80ch; line-height: 1.6; }
+@media (max-width: 760px) { .igrid { grid-template-columns: 1fr; } .icard, .icard:nth-child(even) { border-right: 0; border-bottom: 1px solid var(--rule) !important; } .icard:last-child { border-bottom: 0 !important; } .ring { position: relative; right: auto; top: auto; margin-bottom: 8px; } }
+
+/* panels: one per tab. Without JavaScript every panel shows. */
+.js .panel:not(.on) { display: none; }
+.panel { padding-block: clamp(36px, 6vw, 80px); outline: none; }
+.stage { font-family: var(--note); font-size: 0.8125rem; color: var(--accent); margin-bottom: 14px; display: block; }
+h2 { font-size: clamp(1.5rem, 4vw, 2.9rem); font-stretch: 108%; font-weight: 700; letter-spacing: -0.01em; }
+.lede { color: var(--muted); margin-top: 16px; }
+.sec { margin-top: clamp(48px, 7vw, 88px); padding-top: clamp(28px, 4vw, 48px); border-top: 1px solid var(--rule); }
+.sub-h { font-size: clamp(1.3rem, 2.6vw, 1.7rem); font-stretch: 108%; font-weight: 700; }
+.cols { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(24px, 4vw, 56px); align-items: center; margin-top: clamp(28px, 4vw, 48px); }
+.cols > * { min-width: 0; }
+.c-5 { grid-column: span 5; } .c-7 { grid-column: span 7; }
+@media (max-width: 820px) { .c-5, .c-7 { grid-column: 1 / -1; } }
+.top { align-items: start; }
+
+/* figures: plate colour must equal the surface behind the figure */
+.fig-box { margin: 0; }
+.fig {
+  --hairline-plate: var(--bg);
+  --hairline-hi: var(--fig-hi);
+  --hairline-edge: var(--fig-edge);
+  --hairline-mid: var(--fig-mid);
+  --hairline-lo: var(--fig-lo);
+  --hairline-stroke: 1;
+  width: 100%;
+  max-width: 620px;
+  margin-inline: auto;
+}
+.fig-box.sm .fig { max-width: 300px; margin-inline: auto 0; }
+.fig-box figcaption { display: none; font-family: var(--note); font-size: 0.75rem; color: var(--muted); margin-top: 10px; max-width: 620px; margin-inline: auto; min-height: 2.6em; }
+.fig-box figcaption .read { color: var(--accent); white-space: nowrap; }
+
+/* overview hero */
+.hero h1 { font-size: clamp(2rem, 6.4vw, 5rem); font-stretch: 118%; font-weight: 800; letter-spacing: -0.02em; }
+.hero .who { margin-top: 28px; font-size: 1.25rem; }
+.hero .who strong { font-weight: 700; }
+.hero .role { color: var(--accent); font-weight: 500; }
+.hero .pitch { margin-top: 18px; color: var(--muted); }
+.cta { display: inline-block; margin-top: 28px; padding: 12px 20px; border: 1.5px solid var(--fg); text-decoration: none; font-weight: 600; }
+.cta + .cta { margin-left: 10px; }
+.ctas { display: inline-flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; } .ctas .cta, .ctas .cta + .cta { margin: 0; }
+.coffee { position: fixed; right: 16px; bottom: 64px; z-index: 40; display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; padding: 11px 16px; font-weight: 600; font-size: 0.875rem; text-decoration: none; border: 1px solid var(--accent); box-shadow: 0 2px 10px rgba(0,0,0,.18); }
+.cvfab { position: fixed; right: 16px; bottom: 116px; z-index: 40; font-family: inherit; }
+.cvfab > button { display: inline-flex; align-items: center; gap: 8px; background: var(--bg); color: var(--accent); border: 1px solid var(--accent); padding: 11px 16px; font: inherit; font-weight: 600; font-size: 0.875rem; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.14); margin-left: auto; }
+.cvfab > button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.cvfab > button:hover, .cvfab > button[aria-expanded="true"] { background: var(--accent); color: #fff; }
+:root[data-theme="dark"] .cvfab > button:hover, :root[data-theme="dark"] .cvfab > button[aria-expanded="true"] { color: #120c24; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .cvfab > button:hover, :root:not([data-theme="light"]) .cvfab > button[aria-expanded="true"] { color: #120c24; } }
+.cvfab .cvpop { position: absolute; right: 0; bottom: calc(100% + 8px); width: max-content; background: var(--bg); border: 1px solid var(--rule); padding: 10px 14px; box-shadow: 0 6px 24px rgba(0,0,0,.18); font-size: .9375rem; }
+.cvfab .cvpop[hidden] { display: none; }
+.cvfab .cvpop p { margin: 0 0 6px; font-family: var(--note); font-size: .6875rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.cvfab .cvpop a { display: block; padding: 5px 0; color: var(--accent); font-weight: 600; text-decoration: none; }
+.cvfab .cvpop a:hover { text-decoration: underline; }
+.coffee svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.coffee:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+:root[data-theme="dark"] .coffee { color: #120c24; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .coffee { color: #120c24; } }
+:root[data-theme="dark"] .coffee:hover, :root[data-theme="light"] .coffee:hover { color: var(--bg); }
+body { padding-bottom: 120px; }
+@media (max-width: 420px) { .coffee .long { display: none; } }
+@media (max-width: 640px) {
+  .picker { right: 10px; bottom: 10px; font-size: 0.6875rem; }
+  .picker .opt { padding: 4px 7px; }
+  .picker .gear { padding: 5px 8px; }
+  .coffee { right: 10px; bottom: 44px; padding: 7px 11px; font-size: 0.78rem; gap: 6px; }
+  .coffee svg { width: 15px; height: 15px; }
+  .cvfab { right: 10px; bottom: 84px; } .cvfab > button { padding: 7px 11px; font-size: 0.78rem; gap: 6px; } .cvfab > button svg { width: 15px; height: 15px; }
+  body { padding-bottom: 96px; }
+}
+@media (max-width: 600px) { .cta + .cta { margin-left: 0; margin-right: 10px; } }
+button.cta { background: none; color: inherit; font: inherit; font-weight: 600; cursor: pointer; }
+.cta:hover { background: var(--fg); color: var(--bg); }
+
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(40px, 6vw, 72px); border-block: 1px solid var(--rule); }
+.facts > div { padding: 22px 20px 22px 0; }
+.facts > div + div { padding-left: 20px; border-left: 1px solid var(--rule); }
+.facts dt { font-family: var(--display); font-stretch: 112%; font-weight: 800; font-size: clamp(1.6rem, 3.6vw, 2.9rem); line-height: 1; letter-spacing: -0.02em; }
+.facts dt.rust { color: var(--accent); }
+.facts dd { margin: 10px 0 0; font-size: 0.9375rem; color: var(--muted); }
+@media (max-width: 820px) {
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts > div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .facts > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+}
+
+/* statistics lists */
+.stats { margin: 0; display: grid; }
+.stats > div { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; padding-block: 12px; border-top: 1px solid var(--rule); }
+.stats dt { font-family: var(--display); font-stretch: 112%; font-weight: 800; font-size: 1.75rem; min-width: 6.2rem; flex: none; white-space: nowrap; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.stats dt.rust { color: var(--accent); }
+.stats dd { margin: 0; color: var(--muted); }
+.block-title { font-size: 1.125rem; font-weight: 700; font-stretch: 108%; margin-bottom: 10px; }
+.stack { display: grid; gap: 32px; }
+
+/* tables */
+.scroll { overflow-x: auto; margin-top: clamp(24px, 4vw, 40px); }
+table { border-collapse: collapse; width: 100%; min-width: 560px; }
+th, td { text-align: left; vertical-align: top; padding: 14px 18px 14px 0; border-top: 1px solid var(--rule); }
+th { font-family: var(--note); font-size: 0.75rem; font-weight: 500; color: var(--muted); padding-block: 10px; }
+td:last-child, th:last-child { padding-right: 0; }
+tbody td:last-child { font-weight: 600; }
+tbody td:first-child { color: var(--muted); }
+table.paired tbody td:first-child { color: var(--fg); }
+table.paired tbody td:last-child { font-weight: 400; }
+table.paired tbody th { font-family: var(--note); font-weight: 500; font-size: 0.8125rem; color: var(--accent); padding-top: 17px; width: 9.5rem; }
+
+/* steps, parties, entries */
+.flow { display: grid; margin: 0; padding: 0; list-style: none; }
+.flow li { padding-block: 14px; border-top: 1px solid var(--rule); }
+.flow b { display: block; font-family: var(--note); font-weight: 500; font-size: 0.8125rem; color: var(--accent); margin-bottom: 2px; }
+.parties { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: clamp(24px, 4vw, 40px); }
+.parties > div { border-top: 2px solid var(--fg); padding-top: 14px; min-width: 0; }
+.parties h3 { font-size: 1.125rem; font-stretch: 108%; font-weight: 700; }
+.parties p { margin-top: 10px; font-size: 0.9688rem; color: var(--muted); }
+.parties p b { color: var(--fg); font-weight: 600; }
+@media (max-width: 820px) { .parties { grid-template-columns: 1fr; } }
+.models { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 22px 0 0; padding: 0; list-style: none; border: 1px solid var(--rule); }
+.models li { padding: 22px clamp(16px, 2.4vw, 28px) 24px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.models li:nth-child(even) { border-right: 0; } .models li:nth-last-child(-n+2) { border-bottom: 0; }
+.models .no { font-family: var(--note); font-size: 0.75rem; letter-spacing: 0.08em; color: var(--accent); }
+.models h4 { margin: 8px 0 0; font-family: var(--display); font-size: 1.2rem; font-weight: 700; line-height: 1.2; }
+.models p { margin-top: 10px; font-size: 0.9688rem; }
+.models .tag { display: inline-block; margin-top: 12px; font-family: var(--note); font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); padding: 3px 8px; }
+@media (max-width: 760px) { .models { grid-template-columns: 1fr; } .models li { border-right: 0 !important; border-bottom: 1px solid var(--rule) !important; } .models li:last-child { border-bottom: 0 !important; } }
+.points { margin: 18px 0 0; padding: 0; list-style: none; display: grid; max-width: 62ch; }
+.points li { padding-block: 11px; border-top: 1px solid var(--rule); }
+.points li b { font-weight: 600; }
+
+.entries { margin: clamp(24px, 4vw, 40px) 0 0; padding: 0; list-style: none; }
+.entry { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 8px clamp(16px, 3vw, 40px); padding-block: 22px; border-top: 1px solid var(--rule); }
+.entry.has-img { grid-template-columns: 6.5rem minmax(0, 1fr) minmax(0, 340px); }
+.entry .yr { font-family: var(--note); font-size: 0.8125rem; color: var(--accent); padding-top: 5px; }
+.entry h3 { font-size: 1.25rem; font-stretch: 108%; font-weight: 700; }
+.entry p { margin-top: 6px; color: var(--muted); }
+.entry figure { margin: 0; }
+.entry figure img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 30%; border: 1px solid var(--rule); }
+.entry figcaption { font-family: var(--note); font-size: 0.75rem; color: var(--muted); margin-top: 8px; }
+@media (max-width: 760px) { .entry, .entry.has-img { grid-template-columns: 1fr; } }
+
+/* career overview rows */
+.career a.row { display: grid; grid-template-columns: 11rem minmax(0, 1fr) auto; gap: 6px clamp(16px, 3vw, 40px); padding-block: 20px; border-top: 1px solid var(--rule); text-decoration: none; align-items: baseline; }
+.career a.row:last-child { border-bottom: 1px solid var(--rule); }
+.career .when { font-family: var(--note); font-size: 0.8125rem; color: var(--accent); }
+.career h3 { font-size: 1.25rem; font-stretch: 108%; font-weight: 700; }
+.career p { margin-top: 4px; color: var(--muted); }
+.career .go { font-weight: 600; white-space: nowrap; }
+.career a.row:hover .go { color: var(--accent); }
+@media (max-width: 760px) { .career a.row { grid-template-columns: 1fr; } }
+
+/* ai projects */
+.proj { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 10px clamp(16px, 3vw, 40px); padding-block: 26px; border-top: 1px solid var(--rule); }
+.proj .meta { font-family: var(--note); font-size: 0.8125rem; color: var(--accent); }
+.proj .meta span { display: block; color: var(--muted); margin-top: 4px; }
+.proj h3 { font-size: 1.375rem; font-stretch: 108%; font-weight: 700; }
+.proj p { margin-top: 8px; }
+.proj p.small { color: var(--muted); font-size: 0.9688rem; }
+.tags { margin: 14px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.tags li { border: 1px solid var(--rule); padding: 4px 11px; font-size: 0.875rem; }
+.links { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px 22px; font-weight: 600; }
+@media (max-width: 760px) { .proj { grid-template-columns: 1fr; } }
+.group-h { margin-top: clamp(36px, 5vw, 56px); font-size: 0.8125rem; font-family: var(--note); font-weight: 500; color: var(--muted); padding-bottom: 10px; }
+
+.sub { font-size: 0.8125rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--muted, inherit); margin: clamp(28px,4vw,44px) 0 0; }
+/* toolkit */
+.toolkit { display: grid; margin-top: clamp(24px, 4vw, 40px); }
+.toolkit > div { display: grid; grid-template-columns: minmax(150px, 200px) 1fr; gap: 8px 32px; padding-block: 14px; border-top: 1px solid var(--rule); }
+.toolkit h3 { font-family: var(--note, "DM Mono", monospace); font-size: 0.78rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); font-weight: 500; padding-top: 6px; }
+.toolkit ul { margin: 0; padding: 0; list-style: none; display: block; font-size: 1.1875rem; line-height: 1.6; }
+.toolkit li { display: inline; border: 0; padding: 0; font-size: inherit; }
+.toolkit li + li::before { content: "\00b7"; color: var(--accent); opacity: .7; padding: 0 .5em; }
+@media (max-width: 640px) { .toolkit > div { grid-template-columns: 1fr; } .toolkit ul { font-size: 1.0625rem; } }
+
+/* contact: title block */
+.contact h2 { font-size: clamp(1.6rem, 4vw, 2.9rem); font-stretch: 114%; font-weight: 800; letter-spacing: -0.02em; max-width: 18ch; }
+.photo { margin: 0; }
+.photo img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 14%; border: 1px solid var(--rule); }
+.titleblock { margin: 28px 0 0; border: 1.5px solid var(--fg); }
+.titleblock > div { display: grid; grid-template-columns: minmax(96px, 8rem) 1fr; border-top: 1px solid var(--rule); }
+.titleblock > div:first-child { border-top: 0; }
+.titleblock dt { font-family: var(--note); font-size: 0.75rem; color: var(--muted); padding: 11px 12px; border-right: 1px solid var(--rule); }
+.titleblock dd { margin: 0; padding: 9px 12px; min-width: 0; overflow-wrap: anywhere; }
+.copy { font: inherit; font-family: var(--note); font-size: 0.75rem; background: none; color: var(--accent); border: 1px solid var(--accent); padding: 2px 8px; margin-left: 8px; cursor: pointer; }
+.copy:hover { background: var(--accent); color: var(--bg); }
+
+footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-family: var(--note); font-size: 0.75rem; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; }
+
+.lang { flex: none; align-self: center; margin-left: auto; display: inline-flex; gap: 2px; font-family: var(--note); font-size: 0.75rem; letter-spacing: 0.08em; }
+.lang a { padding: 6px 7px; color: var(--muted); text-decoration: none; border: 1px solid transparent; }
+.lang a:hover { color: var(--fg); }
+.lang a[aria-current="true"] { color: var(--accent); border-color: var(--accent); }
+.bar .lang + .tabs { margin-left: 0; }
+.bar { position: relative; }
+@media (max-width: 1100px) { .lang { position: absolute; right: 0; top: 8px; margin: 0; } .bar .lang + .tabs { margin-left: calc(var(--gutter) * -1); } }
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add("js");</script>
+<script>
+(function(){try{var m=localStorage.getItem("mode");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}})();
+</script>
+<div class="bar-wrap">
+<div class="wrap bar">
+<a class="name" href="#overview">Anand Narasipuram</a>
+<div aria-label="Language / Sprache" class="lang" id="lang"><a href="../" hreflang="en" lang="en">EN</a><a aria-current="true" href="./" hreflang="de" lang="de">DE</a></div>
+<nav aria-label="Abschnitte" class="tabs" id="tabs">
+<a href="#overview"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"></path><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"></path></svg><span>Überblick</span></a>
+<a href="#smartivate"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3l8 4-8 4-8-4z"></path><path d="M4 12l8 4 8-4"></path><path d="M4 16.5l8 4 8-4"></path></svg><span>Konfigurator<small>(Smartivate)</small></span></a>
+<a href="#uponor"><svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"></circle><path d="M15 15l6 6M7.5 10.5h6"></path></svg><span>EcoMate<small>(Uponor)</small></span></a>
+<a href="#eon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M9 3v5M15 3v5"></path><path d="M6 8h12v4a6 6 0 0 1-12 0z"></path><path d="M12 18v4"></path></svg><span>IHC<small>(E.ON One)</small></span></a>
+<a href="#toolkit"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z"></path><circle cx="12" cy="12" r="3.2"></circle></svg><span>Toolkit</span></a>
+<a href="#credentials"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 4h10v5a5 5 0 0 1-10 0z"></path><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"></path><path d="M12 14v4M8 21h8M9.5 18h5"></path></svg><span>Qualifikationen</span></a>
+<a href="#ai-projects"><svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="6" cy="5" r="2"></circle><circle cx="6" cy="19" r="2"></circle><circle cx="18" cy="9" r="2"></circle><path d="M6 7v10M6 12c0-3 6-1 10-2.2"></path></svg><span>KI-Projekte</span></a>
+<a href="#contact"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="13" width="18" x="3" y="6"></rect><path d="M3 6l9 7 9-7"></path></svg><span>Kontakt</span></a>
+<i aria-hidden="true" class="dim" id="dim"></i>
+</nav>
+</div>
+</div>
+<div class="wrap">
+<main data-start="overview" id="main">
+<!-- OVERVIEW -->
+<section aria-labelledby="h-hero" class="panel" id="overview" tabindex="-1">
+<div class="hero">
+<div class="cols" style="margin-top:0">
+<div class="c-5">
+<h1 id="h-hero">Die Zukunft smarter Gebäude optimieren</h1>
+<p class="who"><strong>Ausgewählte Produktarbeit</strong><br/><span class="role">Senior Product Manager, IoT &amp; Energie</span></p>
+<p class="pitch">Ich entwickle vernetzte Heizungs- und Energieprodukte, vom geförderten Start-up bis zur Plattform, die in Hunderten von Gebäuden läuft.</p>
+<span class="ctas"><a class="cta" href="#ai-projects">Meine KI-Projekte ansehen</a><a class="cta" href="#contact">Kontakt aufnehmen</a></span><br/><a class="cue" href="#journey" id="cue"><i></i>Scrollen zum Herauszoomen</a>
+</div>
+<figure class="fig-box c-7">
+<div aria-label="Isometrisches App-Fenster, in vier Ebenen aufgeteilt. Mit dem Zeiger darüberfahren, um die Lücken zu öffnen." class="fig" id="fig-hero" role="img"></div>
+<figcaption aria-hidden="true" id="cap-hero"><span>Mit der Maus über die Zeichnung fahren, um die Ebenen zu öffnen.</span> <span class="read"></span></figcaption>
+</figure>
+</div>
+<dl class="facts">
+<div><dt>7+ Jahre</dt><dd>Produktmanagement von A bis Z in IoT, Smart Home und Home-Energiemanagement (HEMS), jetzt mit angewandter KI.</dd></div>
+<div><dt class="rust">Bis zu 18 %</dt><dd>Heizenergie eingespart durch eine SaaS-Lösung für intelligente Heizungsregelung.</dd></div>
+<div><dt>130.000 €</dt><dd>EXIST-Gründerstipendium vom Bundesministerium (BMWi) für ein Start-up von null auf eins.</dd></div>
+<div><dt>Doppelter M.Sc.</dt><dd>ENTECH am KIT und IST Lissabon, mit einem EU-InnoEnergy-Stipendium (20.000 €).</dd></div>
+</dl>
+</div>
+<div class="sec" id="journey">
+<div class="jhead">
+<span class="kick">Der Weg, herausgezoomt</span>
+<h2>Von einem Gerät in einem Haus zum Energiesystem.</h2>
+<p class="lede">Jede Station hat den Blickwinkel erweitert. Folgen Sie der Zeichnung beim Herauszoomen und sehen Sie, was sich jeweils verändert hat.</p>
+</div>
+<ol class="jchaps" id="jchaps">
+<li class="chap" data-i="0">
+<div aria-hidden="true" class="jbox">
+<div class="rings"><svg viewbox="-100 -100 200 200"><g><circle cx="0" cy="0" r="14"></circle><circle cx="0" cy="0" r="28"></circle><circle cx="0" cy="0" r="42"></circle><circle cx="0" cy="0" r="56"></circle><circle cx="0" cy="0" r="70"></circle></g><circle class="tk" cx="0" cy="0" r="84"></circle><circle class="hot" cx="0" cy="0" r="91"></circle><line x1="-100" x2="100" y1="0" y2="0"></line><line x1="0" x2="0" y1="-100" y2="100"></line></svg></div>
+<div class="jfig"><div class="fig" id="jf-0"></div></div>
+<div class="jread"><div class="row1"><span>Maßstab <b>1 m</b></span><span>Ein einzelnes Gerät</span><span>01 / 05</span></div><div class="ruler"><span data-l="1 m" style="left:0%"></span><span data-l="10 m" style="left:25%"></span><span data-l="100 m" style="left:50%"></span><span data-l="10 km" style="left:75%"></span><span data-l="Netz" style="left:100%"></span><i class="mk" style="left:0%"></i></div></div>
+</div>
+<div class="jtext"><span class="cno">01 · SmartHome-Konfigurator (Smartivate) · 2018 bis heute</span>
+<h3>Ein Zuhause voller Geräte, die nicht miteinander sprechen.</h3>
+<p>Über 90 Hersteller und mehr als 6 konkurrierende Standards. Eine Wärmepumpe oder ein smartes Thermostat spart nur dann Energie, wenn es mit dem Rest des Hauses funktioniert. Ich habe Smartivate mitgegründet, damit genau das gelingt.</p>
+<dl class="jstat"><div><dt class="rust"><b class="cnt" data-suf="+" data-to="450">450+</b></dt><dd>Geräte auf Kompatibilität geprüft</dd></div><div><dt><b class="cnt" data-suf="+" data-to="2500">2.500+</b></dt><dd>Nutzer seit dem Start 2020</dd></div><div><dt><b class="cnt" data-suf=" €" data-to="130000">130.000 €</b></dt><dd>EXIST-Förderung gesichert</dd></div></dl>
+<p class="impact"><b>Wirkung</b>Weniger Fehlkäufe, damit mehr Haushalte effiziente Geräte mit Zuversicht einsetzen können.</p>
+<a class="more" href="#smartivate">Zum Konfigurator-Case</a></div>
+</li>
+<li class="chap" data-i="1">
+<div aria-hidden="true" class="jbox">
+<div class="rings"><svg viewbox="-100 -100 200 200"><g><circle cx="0" cy="0" r="14"></circle><circle cx="0" cy="0" r="28"></circle><circle cx="0" cy="0" r="42"></circle><circle cx="0" cy="0" r="56"></circle><circle cx="0" cy="0" r="70"></circle></g><circle class="tk" cx="0" cy="0" r="84"></circle><circle class="hot" cx="0" cy="0" r="91"></circle><line x1="-100" x2="100" y1="0" y2="0"></line><line x1="0" x2="0" y1="-100" y2="100"></line></svg></div>
+<div class="jfig"><div class="fig" id="jf-1"></div></div>
+<div class="jread"><div class="row1"><span>Maßstab <b>10 m</b></span><span>Im Gebäude</span><span>02 / 05</span></div><div class="ruler"><span data-l="1 m" style="left:0%"></span><span data-l="10 m" style="left:25%"></span><span data-l="100 m" style="left:50%"></span><span data-l="10 km" style="left:75%"></span><span data-l="Netz" style="left:100%"></span><i class="mk" style="left:25%"></i></div></div>
+</div>
+<div class="jtext"><span class="cno">02 · EcoMate (Uponor) · 2021 bis 2023</span>
+<h3>Den Regelkreis im Gebäude schließen.</h3>
+<p>Wärme geht dort verloren, wo niemand hinschaut. Bei Uponor habe ich Sensoren am Heizkessel und im kältesten Raum angebracht, damit die Heizung auf reale Bedingungen reagiert, und das in Mehrfamilien-, Misch- und Gewerbegebäuden pilotiert.</p>
+<dl class="jstat"><div><dt class="rust">12–15 %</dt><dd>Heizenergie in den Pilotprojekten optimiert</dd></div><div><dt><b class="cnt" data-to="3">3</b></dt><dd>europäische Märkte</dd></div><div><dt>0 €</dt><dd>Vorabkosten für den Kunden</dd></div></dl>
+<p class="impact"><b>Wirkung</b>Die Einsparung wird gegen eine Baseline gemessen, der Kunde zahlt also nur aus tatsächlich gesparter Energie.</p>
+<a class="more" href="#uponor">Zum EcoMate-Case</a></div>
+</li>
+<li class="chap" data-i="2">
+<div aria-hidden="true" class="jbox">
+<div class="rings"><svg viewbox="-100 -100 200 200"><g><circle cx="0" cy="0" r="14"></circle><circle cx="0" cy="0" r="28"></circle><circle cx="0" cy="0" r="42"></circle><circle cx="0" cy="0" r="56"></circle><circle cx="0" cy="0" r="70"></circle></g><circle class="tk" cx="0" cy="0" r="84"></circle><circle class="hot" cx="0" cy="0" r="91"></circle><line x1="-100" x2="100" y1="0" y2="0"></line><line x1="0" x2="0" y1="-100" y2="100"></line></svg></div>
+<div class="jfig"><div class="fig" id="jf-2"></div></div>
+<div class="jread"><div class="row1"><span>Maßstab <b>100 m</b></span><span>Ein ganzes Gebäude</span><span>03 / 05</span></div><div class="ruler"><span data-l="1 m" style="left:0%"></span><span data-l="10 m" style="left:25%"></span><span data-l="100 m" style="left:50%"></span><span data-l="10 km" style="left:75%"></span><span data-l="Netz" style="left:100%"></span><i class="mk" style="left:50%"></i></div></div>
+</div>
+<div class="jtext"><span class="cno">03 · Intelligent Heating Control (E.ON One) · 2023 bis 2026</span>
+<h3>Ein Gebäude, das intelligenter heizt.</h3>
+<p>Intelligent Heating Control ist eine IoT-Heizungs-SaaS. Sie senkt den Energieverbrauch eines Gebäudes, ohne dass Mieter etwas umstellen müssen. Verliert die Box ihre Verbindung, schaltet sie in den Bypass-Modus und die Heizung läuft weiter.</p>
+<dl class="jstat"><div><dt class="rust"><b class="cnt" data-pre="Bis zu " data-suf=" %" data-to="18">Bis zu 18 %</b></dt><dd>weniger Heizenergie</dd></div><div><dt><b class="cnt" data-suf="+" data-to="400">400+</b></dt><dd>Installationen im Feld</dd></div><div><dt>7–10 Jahre</dt><dd>wiederkehrendes SaaS-Modell</dd></div></dl>
+<p class="impact"><b>Wirkung</b>Weniger verbrannter Brennstoff in jedem vernetzten Gebäude, in jeder Heizsaison.</p>
+<a class="more" href="#eon">Zum IHC-Case</a></div>
+</li>
+<li class="chap" data-i="3">
+<div aria-hidden="true" class="jbox">
+<div class="rings"><svg viewbox="-100 -100 200 200"><g><circle cx="0" cy="0" r="14"></circle><circle cx="0" cy="0" r="28"></circle><circle cx="0" cy="0" r="42"></circle><circle cx="0" cy="0" r="56"></circle><circle cx="0" cy="0" r="70"></circle></g><circle class="tk" cx="0" cy="0" r="84"></circle><circle class="hot" cx="0" cy="0" r="91"></circle><line x1="-100" x2="100" y1="0" y2="0"></line><line x1="0" x2="0" y1="-100" y2="100"></line></svg></div>
+<div class="jfig"><div class="fig" id="jf-3"></div></div>
+<div class="jread"><div class="row1"><span>Maßstab <b>10 km</b></span><span>Ein Quartier</span><span>04 / 05</span></div><div class="ruler"><span data-l="1 m" style="left:0%"></span><span data-l="10 m" style="left:25%"></span><span data-l="100 m" style="left:50%"></span><span data-l="10 km" style="left:75%"></span><span data-l="Netz" style="left:100%"></span><i class="mk" style="left:75%"></i></div></div>
+</div>
+<div class="jtext"><span class="cno">04 · Das Ausmaß des Problems</span>
+<h3>Herausgezoomt wird die Verschwendung zum Problem des ganzen Systems.</h3>
+<p>Über 80 % der Heizungsanlagen laufen ineffizient. Mit Danfoss Leanheat optimiert ein KI-Algorithmus Fernwärme, Gas- und Ölkessel, und unser gemeinsamer Go-to-Market startete in Deutschland und Finnland mit 5 erfolgreichen Pilotgebäuden.</p>
+<dl class="jstat"><div><dt class="rust"><b class="cnt" data-suf=" %+" data-to="80">80 %+</b></dt><dd>der Heizungsanlagen ineffizient</dd></div><div><dt><b class="cnt" data-suf=" TWh" data-to="52">52 TWh</b></dt><dd>jährliche Verschwendung, höchstens</dd></div><div><dt><b class="cnt" data-suf=" Mrd. €+" data-to="3">3 Mrd. €+</b></dt><dd>pro Jahr in Deutschland verschwendet</dd></div></dl>
+<p class="impact"><b>Wirkung</b>Produkte, die über Partner skalieren, damit eine gute Idee viele Gebäude erreicht.</p>
+<a class="more" href="#eon">Zur Partnerschaft</a></div>
+</li>
+<li class="chap" data-i="4">
+<div aria-hidden="true" class="jbox">
+<div class="rings"><svg viewbox="-100 -100 200 200"><g><circle cx="0" cy="0" r="14"></circle><circle cx="0" cy="0" r="28"></circle><circle cx="0" cy="0" r="42"></circle><circle cx="0" cy="0" r="56"></circle><circle cx="0" cy="0" r="70"></circle></g><circle class="tk" cx="0" cy="0" r="84"></circle><circle class="hot" cx="0" cy="0" r="91"></circle><line x1="-100" x2="100" y1="0" y2="0"></line><line x1="0" x2="0" y1="-100" y2="100"></line></svg></div>
+<div class="jfig"><div class="fig" id="jf-4"></div></div>
+<div class="jread"><div class="row1"><span>Maßstab <b>Netz</b></span><span>Wie es weitergeht</span><span>05 / 05</span></div><div class="ruler"><span data-l="1 m" style="left:0%"></span><span data-l="10 m" style="left:25%"></span><span data-l="100 m" style="left:50%"></span><span data-l="10 km" style="left:75%"></span><span data-l="Netz" style="left:100%"></span><i class="mk" style="left:100%"></i></div></div>
+</div>
+<div class="jtext"><span class="cno">05 · Jetzt</span>
+<h3>KI, damit sich das System anpasst.</h3>
+<p>Wärmepumpen, Home-Energiemanagement und flexible Nachfrage brauchen Software, die gut entscheidet. Nach dem Ironhack-Programm AI Consulting and Integration (400+ Stunden) baue ich Agenten und Copiloten genau für diese Probleme.</p>
+<p class="impact"><b>Wirkung</b>Energieprodukte, die dazulernen, damit die Effizienz nach der Installation nicht endet.</p>
+<a class="more" href="#ai-projects">Zu den KI-Projekten</a></div>
+</li>
+</ol>
+<div class="why" id="why">
+<span class="kick">Warum ich das mache</span>
+<blockquote>Ich möchte meine Arbeit auf Klimaneutralität und Effizienz ausrichten: Produkte, die Gebäuden helfen, weniger Energie zu verbrauchen, und Energiesysteme, die mit weniger Verschwendung laufen, Jahr für Jahr.</blockquote>
+<p class="sig">Anand Narasipuram, Frankfurt</p>
+<span class="ctas"><a class="cta" href="#ai-projects">Meine KI-Projekte ansehen</a><a class="cta" href="#contact">Kontakt aufnehmen</a></span>
+</div>
+</div>
+</section>
+<!-- SMARTIVATE -->
+<section aria-labelledby="h-smart" class="panel" id="smartivate" tabindex="-1">
+<span class="stage">0 → 1</span>
+<h2 id="h-smart">SmartHome-Konfigurator <span class="co">(Smartivate)</span></h2>
+<p class="lede">Mitgründer und Product Lead, 2018 bis heute. Ich habe Deutschlands ersten IoT-SaaS-Konfigurator aufgebaut, um die Fragmentierung im Smart Home abzubauen und Energieeffizienz schneller voranzubringen.</p>
+<div class="scroll">
+<table>
+<thead><tr><th scope="col">Status quo</th><th scope="col">Mit Smartivate</th></tr></thead>
+<tbody>
+<tr><td>Tage oder Wochen der Recherche, um unter über 600 Geräten das richtige zu finden.</td><td>Maßgeschneiderte, zuverlässige Lösungen in unter 20 Minuten.</td></tr>
+<tr><td>46 % der Nutzer fürchten Inkompatibilität, und die Retourenquoten sind hoch.</td><td>Herstellerübergreifende Interoperabilität, garantiert durch eigenes Mapping.</td></tr>
+<tr><td>Isolierte Geräte lassen 55,8 % der Nutzer Datenschutz- und Sicherheitslücken fürchten.</td><td>Stimmige Ökosysteme für Energieeffizienz, Intelligenz und Sicherheit.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="sec">
+<h3 class="sub-h">Die PCMS-Engine</h3>
+<div class="cols">
+<div class="c-7">
+<p style="margin-bottom:18px">Das Product Compatibility Mapping System gleicht ein Zuhause mit über 450 Plug-and-play-Geräten ab und liefert Bundles, die nachweislich zusammenarbeiten.</p>
+<ol class="flow">
+<li><b>Eingabe</b>Merkmale des Hauses, Infrastruktur und Budgetgrenzen.</li>
+<li><b>Abgleich</b>PCMS prüft jeden Kandidaten gegen die vollständige Kompatibilitätsdatenbank.</li>
+<li><b>Ergebnis</b>Bestbewertete, vollständig kompatible Gerätebundles für Heizung, Beleuchtung und Sicherheit.</li>
+</ol>
+</div>
+<figure class="fig-box c-5">
+<div aria-label="Isometrischer Serverschrank mit zwölf Einschüben. Mit dem Zeiger auf und ab fahren, um Einschübe herauszuziehen." class="fig" id="fig-cabinet" role="img"></div>
+<figcaption aria-hidden="true" id="cap-cabinet"><span>Die Kompatibilitätsdatenbank als Serverschrank.</span> <span class="read"></span></figcaption>
+</figure>
+</div>
+</div>
+<div class="sec">
+<h3 class="sub-h">Ein B2B2C-Geschäftsmodell</h3>
+<div class="parties">
+<div>
+<h3>B2B-Partner: Immobilienwirtschaft und Versorger</h3>
+<p><b>Zahlt</b> ein monatliches SaaS-Abonnement plus eine Einrichtungsgebühr.</p>
+<p><b>Traktion</b> 4 aktive B2B-Kunden. Ein eigener Konfigurator für über 8.000 Bewohner ist in Arbeit.</p>
+</div>
+<div>
+<h3>Plattform- und Handelspartner</h3>
+<p><b>Zahlt</b> 3 bis 5 % Warenkorbprovision und 0,20 € pro Klick.</p>
+<p><b>Traktion</b> Weniger Retouren dank garantierter Kompatibilität.</p>
+</div>
+<div>
+<h3>B2C: Eigentümer und Mieter</h3>
+<p><b>Erhält</b> persönliche Beratung und maßgeschneiderte Pakete.</p>
+<p><b>Traktion</b> Über 2.500 Nutzer seit dem Start im Februar 2020.</p>
+</div>
+</div>
+</div>
+<div class="sec">
+<h3 class="sub-h">Förderung, Tests und Wachstum</h3>
+<ul class="points">
+<li><b>Förderung.</b> 130.000 € EXIST-Gründerstipendium vom Bundesministerium (BMWi) erhalten, dazu vier Accelerator-Programme, darunter AXEL Energie-Accelerator.</li>
+<li><b>Tests vor dem Start.</b> Der Konfigurator durchlief monatliche Software-Testevents im CyberForum Karlsruhe, mit 5 bis 7 Testern pro Monat über 7 bis 9 Monate vor dem Start.</li>
+<li><b>Wachstum.</b> Durchgängige SEO, einschließlich Konfigurator-Links in Smart-Home-Foren und Backlink-Aufbau. Google Analytics und Heatmaps zeigten Abbrüche, Klicks und regionale Zugriffe in ganz Deutschland.</li>
+<li><b>Auszeichnungen.</b> Gewinner des hubitation-Finales 2018, 3. Platz beim SmartHome Deutschland Award 2019 und Proptech Top 100 2020. Siehe den Tab <a href="#credentials">Qualifikationen</a>.</li>
+</ul>
+</div>
+</section>
+<!-- UPONOR -->
+<section aria-labelledby="h-upo" class="panel" id="uponor" tabindex="-1">
+<span class="stage">1 → N</span>
+<h2 id="h-upo">EcoMate <span class="co">(Uponor)</span></h2>
+<p class="lede">Product Manager, IoT und Digital Services, Juli 2021 bis Juli 2023, Frankfurt. Ich habe an vernetzten Gebäudeprodukten für drei europäische Märkte gearbeitet, von Sensor-Piloten in realen Gebäuden bis zu einem Geschäftsmodell, das den Kunden vorab nichts kostet.</p>
+<div class="cols">
+<div class="c-7">
+<h3 class="block-title">Heizung mit Sensoren optimieren</h3>
+<p style="margin-bottom:18px">Vernetzte Sensoren lassen die Heizung eines Gebäudes darauf reagieren, was tatsächlich im Gebäude passiert, statt nach festen Einstellungen zu laufen.</p>
+<dl class="stats">
+<div><dt class="rust">12–15 %</dt><dd>Optimierung der Heizenergie in den ersten Pilotprojekten</dd></div>
+<div><dt>3</dt><dd>Gebäudetypen pilotiert: Mehrfamilien-, Misch- und Gewerbegebäude</dd></div>
+<div><dt>3</dt><dd>europäische Märkte betreut</dd></div>
+</dl>
+</div>
+<figure class="fig-box c-5">
+<div aria-label="Isometrische Geschossplatte mit einem Raster aus Sensorpunkten, einige warm, einige kalt. Mit dem Zeiger darüberfahren, um die Sensoren auszulesen." class="fig" id="fig-phosphor" role="img"></div>
+<figcaption aria-hidden="true" id="cap-phosphor"><span>Den Verlust im Gebäude aufspüren.</span> <span class="read"></span></figcaption>
+</figure>
+</div>
+<div class="sec"><div class="cols top" style="margin-top:0">
+<div class="c-7">
+<h3 class="sub-h">So funktioniert der geschlossene Regelkreis</h3>
+<ol class="flow" style="margin-top:18px;max-width:62ch">
+<li><b>01 · Heizkessel</b>Sensoren im Keller, am Heizkessel angeschlossen, messen und optimieren den Heizenergieverbrauch.</li>
+<li><b>02 · Kältester Raum</b>Ein Sensor im kältesten Raum des Gebäudes meldet zurück, wie die Wärme tatsächlich ankommt.</li>
+<li><b>03 · Rückkopplung</b>Dieser Messwert schließt den Regelkreis, sodass die Kesseleinstellungen den realen Bedingungen im Gebäude folgen.</li>
+<li><b>04 · Ergebnis</b>Höhere Energieeffizienz des Gebäudes, ohne dass sich der Alltag der Mieter ändert.</li>
+</ol>
+</div>
+<div class="c-5">
+<h3 class="sub-h">Pilotprojekte in verschiedenen Gebäudetypen</h3>
+<p style="margin-top:14px">Wir haben Pilotprojekte in Mehrfamilienhäusern, Mischgebäuden und Gewerbegebäuden durchgeführt. Sie erreichten zunächst eine Optimierung der Heizenergie von 12–15 %. Damit hatten wir Belege aus drei sehr unterschiedlichen Gebäudetypen statt nur aus einem.</p>
+</div></div></div>
+<div class="sec"><div class="cols top" style="margin-top:0">
+<div class="c-7">
+<h3 class="sub-h">Marktanalyse und Geschäftsmodell</h3>
+<ul class="points">
+<li><b>Wettbewerbsanalyse.</b> Ich habe eine gründliche Wettbewerbsanalyse durchgeführt, um zu verstehen, wie der Markt funktioniert, und daraus die Geschäftsmodelle entwickelt.</li>
+<li><b>Bezahlung aus der Einsparung.</b> Ein Modell misst den Baseline-Verbrauch gegen den tatsächlichen Verbrauch nach Installation der Sensoren. Wir verdienen an der in jedem Gebäude eingesparten Energie und erhalten dafür einen Anteil vom Kunden.</li>
+<li><b>Kein CAPEX für den Kunden.</b> Der Kunde zahlt vorab nichts. Die Kosten werden aus gemessenen Einsparungen gedeckt, sodass die Interessen beider Seiten in dieselbe Richtung zeigen.</li>
+</ul>
+</div>
+<div class="c-5">
+<h3 class="sub-h">Umsetzung und Team</h3>
+<ul class="points">
+<li><b>Remoni-KPIs.</b> Gemeinsam mit den Remoni-Entwicklungs- und Sensorteams die KPIs für das Frontend der Web-App definiert und mit Remoni-Stakeholdern in Dänemark abgestimmt.</li>
+<li><b>Kunden-Web-App.</b> Die Roadmap für das sechsköpfige Entwicklungsteam in Spanien definiert, das die Web-App-Oberfläche für Kunden gebaut hat.</li>
+<li><b>Leckage-Rechner.</b> Einen Rechner entworfen, der den Verlust durch Rohrleitungslecks in Gebäuden beziffert.</li>
+<li><b>Teamführung.</b> Das Team in Spanien im Rahmen des internationalen Produkt-Setups geführt.</li>
+</ul>
+</div></div></div>
+</section>
+<!-- E.ON ONE -->
+<section aria-labelledby="h-eon" class="panel" id="eon" tabindex="-1">
+<span class="stage">1 → N</span>
+<h2 id="h-eon">Intelligent Heating Control, IHC <span class="co">(E.ON One)</span></h2>
+<p class="lede">Product Manager, Intelligent Heating Control (IHC), August 2023 bis März 2026, Essen. Ich habe Start-up-Tempo in den Konzern getragen, ausgerichtet auf das 3-Mrd.-€-Problem der Gebäudeenergie.</p>
+<div class="cols">
+<div class="c-7">
+<h3 class="block-title">Intelligent Heating Control</h3>
+<p style="margin-bottom:18px">Eine IoT-basierte, smarte Heizungs-SaaS, entwickelt mit Partnern wie Danfoss Leanheat, Roamler und Lemonbeat.</p>
+<dl class="stats">
+<div><dt class="rust">Bis zu 18 %</dt><dd>weniger Heizenergieverbrauch in den besten Installationen</dd></div>
+<div><dt>400+</dt><dd>IHC-Boxen im Feld installiert</dd></div>
+<div><dt>7–10 Jahre</dt><dd>wiederkehrendes SaaS-Erlösmodell, gemeinsam mit Danfoss Leanheat aufgebaut</dd></div>
+</dl>
+</div>
+<figure class="fig-box c-5">
+<div aria-label="Isometrische Steckdose mit Stecker am Kabel. Mit dem Zeiger den Stecker zur Steckdose ziehen." class="fig" id="fig-plug" role="img"></div>
+<figcaption aria-hidden="true" id="cap-plug"><span>Energie, Verbindung für Verbindung.</span> <span class="read"></span></figcaption>
+</figure>
+</div>
+<div class="sec">
+<h3 class="sub-h">Die Partnerschaft mit Danfoss Leanheat</h3>
+<ul class="points">
+<li><b>Aufgabenteilung.</b> E.ON One lieferte die IHC-Boxen. Der KI-Algorithmus von Danfoss Leanheat optimierte die Heizenergie für Fernwärme, Gas- und Ölkessel in Deutschland.</li>
+<li><b>Go-to-Market.</b> Eine gemeinsame Go-to-Market-Partnerschaft, die in Deutschland und Finnland startete, mit 5 Pilotgebäuden in Deutschland, alle erfolgreich.</li>
+<li><b>Geschäftsmodell.</b> Vom einmaligen Hardwareverkauf zu einem gemeinsam betriebenen Angebot.</li>
+<li><b>Meine Verantwortung.</b> Produktplanung, technischer Support, Geschäftsmodell und rechtliche Abstimmung auf Seiten von E.ON, mit Unterstützung aus Vertrieb, Marketing und Betrieb.</li>
+</ul>
+</div>
+<div class="sec">
+<h3 class="sub-h">Vier Geschäftsmodelle, die ich entworfen habe</h3>
+<p style="margin-top:14px">Ich habe vier Wege entworfen und getestet, Intelligent Heating Control an den Markt zu bringen, damit die Wahl des Modells auf Evidenz statt auf Annahmen beruhte.</p>
+<ol class="models">
+<li><span class="no">MODEL 01</span><h4>Hardwareverkauf plus mehrjähriges SaaS</h4><p>Direkter Verkauf der Hardware mit mehrjährigem SaaS-Vertrag. Das klassische Modell, das die meisten Kunden am schnellsten verstanden.</p><span class="tag">Am leichtesten verständlich</span></li>
+<li><span class="no">MODEL 02</span><h4>Miete</h4><p>Eine monatliche Gebühr über mehrere Jahre, ohne Hardware-Vorabkosten. Wir haben sie im Rahmen von A/B-Tests angeboten, und kein Kunde hat sie gewählt. Das ist an sich schon aufschlussreich dafür, wie diese Kundengruppe budgetiert.</p><span class="tag">A/B-getestet</span></li>
+<li><span class="no">MODEL 03</span><h4>Partnermodell mit O2 Business</h4><p>Der Telekommunikationsanbieter brachte uns Kunden. So wurde sein Vertriebskanal zu unserem Akquisekanal.</p><span class="tag">Partnerkanal</span></li>
+<li><span class="no">MODEL 04</span><h4>Gemeinsames Modell mit Danfoss Leanheat</h4><p>Unsere Hardware und Feldeinsätze, ihr Optimierungsalgorithmus, anstelle eines einmaligen Hardwareverkaufs.</p><span class="tag">Gemeinsames Angebot</span></li>
+</ol>
+</div>
+<div class="sec">
+<h3 class="sub-h">Ausfallsicher gebaut</h3>
+<p style="margin-top:14px">Verliert die IHC-Box ihre Verbindung, schaltet sie in den Bypass-Modus. Das Signal des Außentemperaturfühlers geht direkt an die Heizungsanlage, sodass die Mieter ihre Heizung behalten.</p>
+<p style="margin-top:14px">Neben den Danfoss-Teams habe ich mit dem E.ON-eigenen Engineering-Team an der Produktentwicklung gearbeitet und mich durch die EU-Energieregulierung (GEG, EnWG) bewegt, um die Enterprise-SaaS zu starten. Die Arbeit wurde mit dem Best of Technology Award 2024 ausgezeichnet, zu sehen im Tab <a href="#credentials">Qualifikationen</a>.</p>
+</div>
+</section>
+<!-- TOOLKIT -->
+<section aria-labelledby="h-tools" class="panel" id="toolkit" tabindex="-1">
+<div class="cols top" style="margin-top:0">
+<div class="c-7">
+<h2 id="h-tools">Mein PM-Werkzeugkasten</h2>
+<p class="lede">Domänenwissen, Methoden und die Werkzeuge, die ich täglich nutze.</p>
+</div>
+<figure class="fig-box sm c-5">
+<div aria-label="Isometrischer Aktenschrank mit einer geöffneten Schublade." class="fig" id="fig-drawer" role="img"></div>
+<figcaption aria-hidden="true" id="cap-drawer"><span class="read"></span></figcaption>
+</figure>
+</div>
+<div class="toolkit">
+<div><h3>Fachliche Expertise</h3><ul><li>IoT und Smart-Home-Mesh-Netzwerke</li><li>Home-Energiemanagementsysteme (HEMS)</li><li>Dezentrale Energieressourcen (DER)</li><li>Wärmepumpen und Ladestationen</li><li>EU-Energieregulierung (GEG, EnWG)</li><li>Cloud, APIs und Interoperabilität</li></ul></div>
+<div><h3>Produktmanagement</h3><ul><li>Roadmaps</li><li>Produktstrategie und Vision</li><li>Produkt-Discovery und Kundenforschung</li><li>Evidenzbasierte Priorisierung</li><li>Backlog-Verantwortung und User Stories</li><li>KPI-Definition und Produktanalytik</li><li>Nutzerforschung und UX</li><li>Hardware-Software-Integration</li></ul></div>
+<div><h3>KI und Automatisierung</h3><ul><li>LLM-Anwendungen und RAG</li><li>Agenten mit n8n und LangGraph</li><li>Evaluation mit LangSmith</li><li>Streamlit-Prototypen</li></ul></div>
+<div><h3>Stakeholder und Führung</h3><ul><li>Stakeholder-Management</li><li>Funktionsübergreifende Führung</li><li>Verteilte, internationale Teams</li><li>Strategische Partnerschaften und Ökosysteme</li><li>Start-up-Mentoring</li></ul></div>
+<div><h3>Agile Umsetzung</h3><ul><li>Scrum, Kanban und OKRs</li><li>Lean Startup</li><li>Design Thinking</li></ul></div>
+<div><h3>Kommerzielles</h3><ul><li>Business Case und Go-to-Market</li><li>B2B2C-Plattformdynamik</li><li>Wiederkehrende SaaS-Modelle und Pricing</li><li>Start-up-Finanzierung</li></ul></div>
+<div><h3>Produkt- und Delivery-Tools</h3><ul><li>Jira</li><li>Confluence</li><li>Miro</li><li>Microsoft Office (Excel, PowerPoint, Word)</li></ul></div>
+<div><h3>Analytik und BI</h3><ul><li>Google Analytics</li><li>Heatmaps und Sitzungsanalyse</li><li>Business-Intelligence-Dashboards</li><li>Tableau</li></ul></div>
+<div><h3>Sprachen</h3><ul><li>Englisch</li><li>Deutsch</li><li>Telugu</li><li>Hindi</li><li>Tamil</li></ul></div>
+</div>
+</section>
+<!-- CREDENTIALS -->
+<section aria-labelledby="h-awards" class="panel" id="credentials" tabindex="-1">
+<div class="cols top" style="margin-top:0">
+<div class="c-7">
+<h2 id="h-awards">Qualifikationen</h2>
+<p class="lede">Ausbildung, Zertifikate und Auszeichnungen für Produkte, die ich gebaut, und Teams, die ich geführt habe.</p>
+</div>
+<figure class="fig-box sm c-5">
+<div aria-label="Isometrische Tresortür." class="fig" id="fig-vault" role="img"></div>
+<figcaption aria-hidden="true" id="cap-vault"><span class="read"></span></figcaption>
+</figure>
+</div>
+<h3 class="sub">Ausbildung und Zertifikate</h3>
+<ul class="entries">
+<li class="entry"><span class="yr">2026</span><div><h3>KI-Manager/-in (IHK)</h3><p>IHK Akademie München und Oberbayern. Seminar mit Jury-Präsentation abgeschlossen, Zertifikat vom 15. Oktober 2026. <a href="https://www.linkedin.com/in/anandnarasipuram/overlay/Certifications/1148311745/treasury/?profileId=ACoAAAoHBjYBykkMI3LQZo7z9JaMOvFqYZigneE" rel="noopener" target="_blank">Auf LinkedIn ansehen</a></p></div></li>
+<li class="entry"><span class="yr">2026</span><div><h3>AI Consulting &amp; Integration, Abschlusszertifikat</h3><p>Ironhack. Ein Programm mit über 400 Stunden, abgeschlossen am 17. September 2026. Die Projekte finden Sie im Tab <a href="#ai-projects">KI-Projekte</a>. <a href="https://www.linkedin.com/in/anandnarasipuram/overlay/Certifications/1146684728/treasury/?profileId=ACoAAAoHBjYBykkMI3LQZo7z9JaMOvFqYZigneE" rel="noopener" target="_blank">Auf LinkedIn ansehen</a></p></div></li>
+<li class="entry"><span class="yr">2025</span><div><h3>Energy Manager</h3><p>TÜV Rheinland. <a href="https://www.linkedin.com/in/anandnarasipuram/details/certifications/" rel="noopener" target="_blank">Auf LinkedIn ansehen</a></p></div></li>
+<li class="entry"><span class="yr">2024</span><div><h3>Product Management LevelUp</h3><p>Product Academy, Zürich, Schweiz. Zertifizierung von August bis Dezember 2024. <a href="https://www.linkedin.com/in/anandnarasipuram/overlay/Certifications/1514525615/treasury/?profileId=ACoAAAoHBjYBykkMI3LQZo7z9JaMOvFqYZigneE" rel="noopener" target="_blank">Auf LinkedIn ansehen</a></p></div></li>
+<li class="entry"><span class="yr">Degree</span><div><h3>M.Sc. ENTECH</h3><p>KIT Karlsruhe und IST Lissabon, mit einem EU-InnoEnergy-Stipendium (20.000 €).</p></div></li>
+<li class="entry"><span class="yr">Programs</span><div><h3>Accelerator-Programme</h3><p>Teilnahme an vier Accelerator-Programmen, darunter AXEL Energie-Accelerator.</p></div></li>
+</ul>
+<h3 class="sub">Auszeichnungen</h3>
+<ul class="entries">
+<li class="entry has-img">
+<span class="yr">2024</span>
+<div><h3>Best of Technology Award</h3><p>Verliehen an E.ON One für Intelligent Heating Control.</p></div>
+<figure><img alt="Anand Narasipuram mit der Urkunde zum Best of Technology Award 2024 der E.ON One GmbH." height="750" src="../img/anand.webp" style="object-position:50% 30%" width="1000"/><figcaption>Preisverleihung, 2024.</figcaption></figure>
+</li>
+<li class="entry"><span class="yr">2020</span><div><h3>Proptech Top 100</h3><p>Smartivate.</p></div></li>
+<li class="entry has-img">
+<span class="yr">2019</span>
+<div><h3>SmartHome Deutschland Award, 3. Platz</h3><p>Kategorie Studentische Leistung, für Smartivate, den Konfigurator für Plug-and-play-Smart-Home-Geräte.</p></div>
+<figure><img alt="Anand Narasipuram mit der Urkunde zum 3. Platz beim SmartHome Deutschland Award 2019, mit Blumenstrauß." height="750" src="../img/smarthome2019.webp" style="object-position:50% 29%" width="1000"/><figcaption>Berlin, 2019.</figcaption></figure>
+</li>
+<li class="entry has-img">
+<span class="yr">2019</span>
+<div><h3>Energy Efficiency Hack, Gewinner der GETEC-Challenge</h3><p>Gewinner der GETEC-Challenge beim Energy Efficiency Hack 2019, veranstaltet von DENEFF.</p></div>
+<figure><img alt="Anand Narasipuram mit der Siegertrophäe der Challenge beim Energy Efficiency Hack 2019, gesponsert von GETEC." height="750" src="../img/eehack2019.webp" style="object-position:50% 36%" width="1000"/><figcaption>Energy Efficiency Hack, April 2019.</figcaption></figure>
+</li>
+<li class="entry"><span class="yr">2019</span><div><h3>InnoAlliance Xi'an, 4. Platz</h3><p>Internationaler Innovationswettbewerb.</p></div></li>
+<li class="entry has-img">
+<span class="yr">2018</span>
+<div><h3>Energy Efficiency Hack, Gesamtsieger</h3><p>Gesamtsieger des Energy Efficiency Hack 2018 in Berlin, veranstaltet von DENEFF.</p></div>
+<figure><img alt="Das Siegerteam des Energy Efficiency Hack 2018 mit Gesamtsieger-Schild und Trophäe." height="750" src="../img/eehack2018.webp" style="object-position:50% 50%" width="1000"/><figcaption>Energy Efficiency Hack, Berlin, 2018.</figcaption></figure>
+</li>
+<li class="entry has-img">
+<span class="yr">2018</span>
+<div><h3>hubitation-Finale, Gewinner</h3><p>Smartivate gewann einen Platz auf der EXPO REAL 2018, der Immobilienmesse.</p></div>
+<figure><img alt="Die Smartivate-Mitgründer in Firmen-Poloshirts mit der Siegerurkunde des hubitation-Finales 2018 und einem Blumenstrauß." height="750" src="../img/hubitation2018.webp" style="object-position:50% 32%" width="1000"/><figcaption>hubitation-Finale, 2018.</figcaption></figure>
+</li>
+</ul>
+</section>
+<!-- AI PROJECTS -->
+<section aria-labelledby="h-ai" class="panel" id="ai-projects" tabindex="-1">
+<div class="cols" style="margin-top:0">
+<div class="c-7">
+<h2 id="h-ai">KI-Projekte</h2>
+<p class="lede">Funktionierende Prototypen aus dem Ironhack-Bootcamp AI Consulting and Integration (Juli bis September 2026) und aus der Vorbereitung auf Product-Manager-Interviews. Jeder startet bei einem echten Problem aus Energie, Heizung oder Kleinunternehmen.</p>
+</div>
+<figure class="fig-box c-5">
+<div aria-label="Isometrischer Commit-Graph auf einem Board. Mit dem Zeiger einen Commit samt Verlauf anheben." class="fig" id="fig-branches" role="img"></div>
+<figcaption aria-hidden="true" id="cap-branches"><span>Über das Board fahren, um einen Commit anzuheben.</span> <span class="read"></span></figcaption>
+</figure>
+</div>
+<h3 class="group-h">IRONHACK-BOOTCAMP</h3>
+<article class="proj">
+<div class="meta">Abschlussprojekt<span>Einzelarbeit, September 2026</span></div>
+<div>
+<h3>Heat Pump Copilot</h3>
+<p>Ein Copilot für Inbetriebnahme und Konnektivität für Installateure bei kleinen und mittleren Wärmepumpen-Herstellern, die in den deutschen Markt eintreten. Er löst zwei Probleme im Feld: Fehlercodes, die Installateure vor Ort nicht lösen können, und Verbindungsabbrüche der Regler, die Kunden für einen Hardwaredefekt halten.</p>
+<p class="small">Retrieval über Herstellerhandbücher, eine regelbasierte Vollständigkeitsprüfung der Inbetriebnahme, ein Frühwarnwerkzeug für Einbrüche der Wärmepumpen-Effizienz (COP), Tracing mit LangSmith und eine LLM-as-a-Judge-Evaluation in der App. Runde 1 umfasste Marktgröße und ein Tableau-Dashboard. Runde 2 umfasste die Einstufung nach EU AI Act, DSGVO, ROI und Risiko sowie die Deployment-Strategie.</p>
+<ul class="tags"><li>Streamlit</li><li>LangChain</li><li>Pinecone</li><li>OpenAI</li><li>LangSmith</li><li>Tableau</li></ul>
+<div class="links">
+<a href="https://heat-pump-copilot.streamlit.app/" rel="noopener">Live demo</a>
+<a href="https://github.com/anandnarasipuram/Capstone-project-heat-pump-copilot-round-2" rel="noopener">GitHub, Runde 2</a>
+<a href="https://github.com/anandnarasipuram/Capstone-Project-Heat-Pump-Copilot-Dashboard" rel="noopener">GitHub, Runde 1</a>
+</div>
+</div>
+</article>
+<article class="proj">
+<div class="meta">Projekt 3<span>Einzelarbeit, August 2026</span></div>
+<div>
+<h3>School Book Order Bot</h3>
+<p>Ein n8n-Workflow, der Schulbuchbestellungen aus dem Telegram-Chat einer Familienbuchhandlung entgegennimmt. Er liest Text und fotografierte handschriftliche Bestellungen, gleicht sie mit dem Verlagskatalog ab, protokolliert jede Bestellung und beantwortet Statusfragen. Auf Wunsch fasst er offene Bestellungen zu einer Liste pro Verlag zusammen, versandfertig.</p>
+<p class="small">Katalogextraktion aus einer 44-seitigen Verlagspreislisten-PDF, ein tägliches Dashboard für die Ladeninhaberin bzw. den Ladeninhaber und eine Prüfung nach EU AI Act (minimales Risiko, mit Transparenzpflicht) und DSGVO für einen möglichen Einsatz bei anderen unabhängigen Buchhandlungen.</p>
+<ul class="tags"><li>n8n</li><li>Telegram</li><li>OpenAI vision</li><li>Google Sheets</li></ul>
+</div>
+</article>
+<article class="proj">
+<div class="meta">Projekt 2<span>Teamprojekt, 2 Tage</span></div>
+<div>
+<h3>Feature Launch Kit</h3>
+<p>Verwandelt die Dokumentation eines Features in Launch-Material: eine Marketing-E-Mail, eine Anleitung und ein Vertriebs-One-Pager. Das MVP übergibt das Dokument direkt im Prompt und nutzt zwei Sprachmodelle, OpenAI als primäres und Cohere als Fallback.</p>
+<p class="small">Mein Part: der LLM-Client samt Fallback-Logik und das Prompt-Template für den Vertriebs-One-Pager.</p>
+<ul class="tags"><li>Python</li><li>OpenAI</li><li>Cohere</li><li>Streamlit</li></ul>
+</div>
+</article>
+<article class="proj">
+<div class="meta">Agent-Labs<span>Juli bis September 2026</span></div>
+<div>
+<h3>Agenten-, RAG- und Automatisierungs-Labs</h3>
+<p>Ein LangGraph-Reklamationsprozessor mit bedingtem Validierungsschritt, ein n8n-Logger von Telegram nach Airtable, eine Untersuchung zweier n8n-RAG-Workflows mit Pinecone, OpenAI-Embeddings und Cohere-Reranker sowie ein Vergleich von Chunking-Strategien für ein PDF und eine Podcast-Aufnahme.</p>
+<ul class="tags"><li>LangGraph</li><li>n8n</li><li>Pinecone</li><li>Airtable</li></ul>
+</div>
+</article>
+<h3 class="group-h">FÜR INTERVIEWS GEBAUT</h3>
+<article class="proj">
+<div class="meta">Product Manager, Energiemarkt<span>Interview-Showcase, 2026</span></div>
+<div>
+<h3>Delivery Lifecycle Diagnostics Copilot</h3>
+<p>Ein Dashboard zum Lieferantenwechsel-Trichter mit einem KI-Triage-Agenten, der erklärt, wo und warum Kundenwechsel ins Stocken geraten. Es bildet den Lebenszyklus in Deutschland, Norwegen, Schweden und den Niederlanden ab, samt den Regeln des jeweiligen Marktes: bilateraler Wechsel nach GPKE in Deutschland, das zentrale Elhub in Norwegen und EDSN in den Niederlanden.</p>
+<p class="small">Eine Akteurs- und Prozesslandkarte, ein Abgrenzungsmemo zwischen grundlegender Lieferabwicklung und Vertragslogik, eine Abfrageschicht in natürlicher Sprache über die Falldaten und eine Integrations-Roadmap zur Anbindung an reale Systeme. Die Falldaten sind synthetisch.</p>
+<ul class="tags"><li>Streamlit</li><li>LLM agent</li><li>Synthetische Daten</li><li>Prozessmodellierung</li></ul>
+<div class="links"><a href="https://delivery-lifecycle-diagnostics-copilot.streamlit.app/" rel="noopener">Live demo</a></div>
+</div>
+</article>
+<article class="proj">
+<div class="meta">Produktportfolio-Management<span>Interview-Showcase, 2026</span></div>
+<div>
+<h3>Portfolio Copilot</h3>
+<p>Eine Streamlit-App für KI-gestütztes Produktportfolio-Management. Ein LLM-Intake markiert schwache Ideen mit einem Widerlegungssignal, Ideen werden nach gewichteten Kriterien bewertet und durchlaufen die Gates Explore, Validate, Scale und Stop, und jeder Business Case wird auf Sensitivität getestet. Aufgebaut um ein beispielhaftes Konzept zur Rechenzentrumskühlung.</p>
+<ul class="tags"><li>Streamlit</li><li>LLM-Intake</li><li>Stage Gates</li><li>Business-Case-Modell</li></ul>
+</div>
+</article>
+</section>
+<!-- CONTACT -->
+<section aria-labelledby="h-contact" class="panel contact" id="contact" tabindex="-1">
+<div class="cols top" style="margin-top:0">
+<div class="c-7">
+<h2 id="h-contact">Bereit, smarte Energieprodukte auf das nächste Level zu bringen.</h2>
+<p class="lede">Offen für Senior-Product-Rollen in IoT, Smart Buildings, Energie und angewandter KI. Buchen Sie einen virtuellen Kaffee, um mich kennenzulernen, oder schreiben Sie mir auf LinkedIn.</p>
+<span class="ctas"><a class="cta" href="https://calendar.app.google/npUWc7JedvNhQCZS7" rel="noopener" target="_blank">Virtuellen Kaffee buchen</a><a class="cta" href="https://www.linkedin.com/in/anandnarasipuram" rel="noopener">Schreiben Sie mir auf LinkedIn</a></span>
+<p class="cvdl">Meinen Lebenslauf herunterladen (2 Seiten, PDF): <a download="" href="../cv/CV_Anand_Narasipuram_DE.pdf">Deutsch</a> · <a download="" href="../cv/CV_Anand_Narasipuram_EN.pdf">English</a></p>
+</div>
+<figure class="fig-box sm c-5">
+<div aria-label="Isometrische Satellitenschüssel, die sich einem Signal zuwendet." class="fig" id="fig-dish" role="img"></div>
+<figcaption aria-hidden="true" id="cap-dish"><span class="read"></span></figcaption>
+</figure>
+</div>
+<div class="cols top" style="margin-top:clamp(32px,5vw,56px)">
+<figure class="photo c-5">
+<img alt="Porträt von Anand Narasipuram." height="1200" src="../img/anand-portrait.webp" style="object-position:50% 25%" width="900"/>
+</figure>
+<div class="c-7">
+<dl class="titleblock" style="margin-top:0">
+<div><dt>Name</dt><dd>Anand Narasipuram</dd></div>
+<div><dt>Rolle</dt><dd>Senior Product Manager, IoT &amp; Energie</dd></div>
+<div><dt>Wohnort</dt><dd>Frankfurt, Deutschland</dd></div>
+<div><dt>Virtueller Kaffee</dt><dd><a href="https://calendar.app.google/npUWc7JedvNhQCZS7" rel="noopener" target="_blank">Termin mit mir buchen</a></dd></div>
+<div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/anandnarasipuram" rel="noopener">linkedin.com/in/anandnarasipuram</a></dd></div>
+</dl>
+</div>
+</div>
+</section>
+</main>
+<a class="coffee" href="https://calendar.app.google/npUWc7JedvNhQCZS7" rel="noopener" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"></path><path d="M16 10h2a2 2 0 0 1 0 4h-2"></path><path d="M8 3v3M12 3v3"></path></svg><span><span class="long">Virtuellen </span>Kaffee buchen</span></a>
+<div class="cvfab" id="cvfab"><button aria-controls="cvpop" aria-expanded="false" id="cvbtn" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"></path></svg><span>CV herunterladen</span></button><div class="cvpop" hidden="" id="cvpop"><p>Lebenslauf, 2 Seiten, PDF</p><a download="" href="../cv/CV_Anand_Narasipuram_DE.pdf">Deutsch</a><a download="" href="../cv/CV_Anand_Narasipuram_EN.pdf">English</a></div></div>
+<div class="picker" id="picker"><button aria-controls="setpop" aria-expanded="false" class="gear" id="gear" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1"></path></svg><span>Einstellungen</span></button><div aria-label="Farbmodus" class="pop" hidden="" id="setpop" role="group"><p class="lab">Darstellung</p><div class="modes"><button aria-pressed="false" class="opt" data-mode="light" type="button">Hell</button><button aria-pressed="false" class="opt" data-mode="dark" type="button">Dunkel</button><button aria-pressed="true" class="opt" data-mode="auto" type="button">Auto</button></div></div></div>
+<footer>
+<span>© 2026 Anand Narasipuram</span>
+<span>Grafiken: Hairline von Lucas Marques (MIT)</span>
+</footer>
+</div>
+<script type="module">
+const registry = {
+  overview: [["fig-hero", "exploded", "cap-hero"], ["jf-0", "router"], ["jf-1", "phosphor"], ["jf-2", "plug"], ["jf-3", "plot"], ["jf-4", "branches"]],
+  smartivate: [["fig-cabinet", "cabinet", "cap-cabinet"]],
+  uponor: [["fig-phosphor", "phosphor", "cap-phosphor"]],
+  eon: [["fig-plug", "plug", "cap-plug"]],
+  "ai-projects": [["fig-branches", "branches", "cap-branches"]],
+  toolkit: [["fig-drawer", "drawer", "cap-drawer"]],
+  credentials: [["fig-vault", "vault", "cap-vault"]],
+  contact: [["fig-dish", "dish", "cap-dish"]]
+};
+const panels = [...document.querySelectorAll(".panel")];
+const ids = panels.map((p) => p.id);
+const tabsEl = document.getElementById("tabs");
+const tabs = [...tabsEl.querySelectorAll("a")];
+const startId = document.getElementById("main").dataset.start || "overview";
+const dim = document.getElementById("dim");
+function placeDim() {
+  const cur = tabsEl.querySelector('[aria-current="page"]');
+  if (!cur || !dim) return;
+  dim.style.width = cur.offsetWidth + "px";
+  dim.style.transform = "translateX(" + cur.offsetLeft + "px)";
+  const l = cur.offsetLeft - (tabsEl.clientWidth - cur.offsetWidth) / 2;
+  tabsEl.scrollTo({ left: Math.max(0, l), behavior: "smooth" });
+}
+new MutationObserver(placeDim).observe(tabsEl, { attributes: true, subtree: true, attributeFilter: ["aria-current"] });
+addEventListener("resize", placeDim);
+addEventListener("load", placeDim);
+placeDim();
+const picker = document.getElementById("picker");
+function applyMode(mode) {
+  const r = document.documentElement;
+  if (mode === "light" || mode === "dark") r.setAttribute("data-theme", mode); else r.removeAttribute("data-theme");
+  picker.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.mode === (mode || "auto"))));
+}
+let mode = "auto";
+try { mode = localStorage.getItem("mode") || "auto"; } catch (e) {}
+applyMode(mode);
+const gear = document.getElementById("gear"), pop = document.getElementById("setpop");
+function setPop(open) { pop.hidden = !open; gear.setAttribute("aria-expanded", String(open)); }
+gear.addEventListener("click", () => setPop(pop.hidden));
+document.addEventListener("click", (e) => { if (!picker.contains(e.target)) setPop(false); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") setPop(false); });
+const cvbtn = document.getElementById("cvbtn"), cvpop = document.getElementById("cvpop"), cvfab = document.getElementById("cvfab");
+function setCv(open) { cvpop.hidden = !open; cvbtn.setAttribute("aria-expanded", String(open)); }
+cvbtn.addEventListener("click", () => { setCv(cvpop.hidden); setPop(false); });
+gear.addEventListener("click", () => setCv(false));
+document.addEventListener("click", (e) => { if (!cvfab.contains(e.target)) setCv(false); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") setCv(false); });
+picker.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-mode]");
+  if (!b) return;
+  mode = b.dataset.mode; applyMode(mode);
+  try { localStorage.setItem("mode", mode); } catch (e2) {}
+});
+const mounted = new Set();
+let hl = null;
+let hlFailed = false;
+
+async function mountFigures(id) {
+  if (mounted.has(id) || !registry[id] || hlFailed) return;
+  mounted.add(id);
+  try {
+    hl = hl || (await import("../hairline.js"));
+  } catch (e) {
+    hlFailed = true;
+    document.querySelectorAll(".fig-box").forEach((f) => { f.hidden = true; });
+    return;
+  }
+  for (const [figId, name, capId] of registry[id]) {
+    const el = document.getElementById(figId);
+    const cap = capId ? document.getElementById(capId) : null;
+    const read = cap ? cap.querySelector(".read") : null;
+    if (!el || typeof hl[name] !== "function") continue;
+    hl[name](el, {
+      theme: "auto",
+      intensity: 0.6,
+      onRead: (t) => { if (read) read.textContent = t ? "[" + t + "]" : ""; }
+    });
+  }
+}
+
+function show(first) {
+  const wanted = location.hash.replace("#", "");
+  const id = ids.includes(wanted) ? wanted : startId;
+  panels.forEach((p) => p.classList.toggle("on", p.id === id));
+  tabs.forEach((a) => {
+    const on = a.getAttribute("href") === "#" + id;
+    if (on) { a.setAttribute("aria-current", "page"); }
+    else a.removeAttribute("aria-current");
+  });
+  if (!first) window.scrollTo(0, 0);
+  mountFigures(id);
+}
+window.addEventListener("hashchange", () => show(false));
+show(true);
+
+/* journey motion */
+(function () {
+  const list = document.getElementById("jchaps");
+  const head = document.createElement("i"); head.className = "head"; head.setAttribute("aria-hidden", "true"); list.appendChild(head);
+  list.querySelectorAll(".ruler").forEach((r) => { const m = r.querySelector(".mk"); if (m) r.style.setProperty("--fill", m.style.left); });
+  if (!list) return;
+  const chaps = [...list.querySelectorAll(".chap")];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function count(el) {
+    const to = +el.dataset.to, pre = el.dataset.pre || "", suf = el.dataset.suf || "";
+    if (reduce) return;
+    const t0 = performance.now(), d = 1100;
+    (function tick(t) {
+      const k = Math.min(1, (t - t0) / d), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = pre + Math.round(to * e).toLocaleString("de") + suf;
+      if (k < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+  const seen = new IntersectionObserver((es) => {
+    es.forEach((e) => {
+      if (!e.isIntersecting || e.target.classList.contains("seen")) return;
+      e.target.classList.add("seen");
+      e.target.querySelectorAll(".cnt").forEach(count);
+    });
+  }, { rootMargin: "0px 0px -18% 0px" });
+  chaps.forEach((c) => seen.observe(c));
+  const why = document.getElementById("why");
+  new IntersectionObserver((es, o) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("seen"); o.unobserve(e.target); } }), { rootMargin: "0px 0px -20% 0px" }).observe(why);
+
+
+  /* impact widgets */
+  const imp = document.getElementById("impact");
+  if (imp) {
+    const cards = [...imp.querySelectorAll(".icard")];
+    const io = new IntersectionObserver((es, o) => es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      o.unobserve(e.target);
+      e.target.querySelectorAll(".cnt").forEach(count);
+      const fg = e.target.querySelector(".ring .fg");
+      if (fg) { const c = 2 * Math.PI * 26; fg.style.strokeDashoffset = (c * (1 - fg.dataset.pct / 100)).toFixed(1); }
+    }), { rootMargin: "0px 0px -15% 0px" });
+    cards.forEach((c) => io.observe(c));
+  }
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(() => {
+      ticking = false;
+      const vh = innerHeight;
+      const lr = list.getBoundingClientRect();
+      list.style.setProperty("--p", Math.min(1, Math.max(0, (vh * 0.55 - lr.top) / lr.height)).toFixed(3));
+      chaps.forEach((c, i) => {
+        const r = c.getBoundingClientRect();
+        c.classList.toggle("on", r.top < vh * 0.55);
+        const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+        const box = c.querySelector(".jbox");
+        box.style.setProperty("--z", (2.4 - i * 0.12 - p * 1.3).toFixed(3));
+        box.style.setProperty("--rot", ((i % 2 ? -1 : 1) * p * 50).toFixed(1) + "deg");
+      });
+    });
+  }
+  addEventListener("scroll", onScroll, { passive: true }); addEventListener("resize", onScroll); onScroll();
+})();
+</script>
+<script>
+(function(){var l=document.getElementById("lang");if(!l)return;function u(){l.querySelectorAll("a").forEach(function(a){a.hash=location.hash;});}u();addEventListener("hashchange",u);})();
+</script>
+</body>
+</html>
