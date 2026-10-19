@@ -16,6 +16,10 @@
 <meta name="twitter:image" content="https://anandnarasipuram.com/og-image.jpg">
 <link rel="alternate" hreflang="en" href="https://anandnarasipuram.com/">
 <link rel="alternate" hreflang="de" href="https://anandnarasipuram.com/de/">
+<script>
+/* Open the German version for browsers set to German, unless the visitor has picked a language. */
+(function(){try{if(localStorage.getItem("lang"))return;var l=(navigator.languages&&navigator.languages[0])||navigator.language||"";if(/^de\b/i.test(l))location.replace("/de/"+location.hash);}catch(e){}})();
+</script>
 <title>Anand Narasipuram</title>
 <link rel="preload" href="fonts/dm-sans-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -470,7 +474,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 <div class="bar-wrap">
   <div class="wrap bar">
     <a class="name" href="#overview">Anand Narasipuram</a>
-    <div class="lang" id="lang" aria-label="Language / Sprache"><a href="./" hreflang="en" lang="en" aria-current="true">EN</a><a href="de/" hreflang="de" lang="de" >DE</a></div>
+    <div class="lang" id="lang" aria-label="Language / Sprache"><a href="/" hreflang="en" lang="en" aria-current="true">EN</a><a href="/de/" hreflang="de" lang="de" >DE</a></div>
     <nav class="tabs" aria-label="Sections" id="tabs">
       <a href="#overview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></svg><span>Overview</span></a>
       <a href="#smartivate"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4-8 4-8-4z"/><path d="M4 12l8 4 8-4"/><path d="M4 16.5l8 4 8-4"/></svg><span>Configurator<small>(Smartivate)</small></span></a>
@@ -1130,7 +1134,7 @@ show(true);
 })();
 </script>
 <script>
-(function(){var l=document.getElementById("lang");if(!l)return;function u(){l.querySelectorAll("a").forEach(function(a){a.hash=location.hash;});}u();addEventListener("hashchange",u);})();
+(function(){var l=document.getElementById("lang");if(!l)return;function u(){l.querySelectorAll("a").forEach(function(a){a.hash=location.hash;});}u();addEventListener("hashchange",u);l.addEventListener("click",function(e){var a=e.target.closest("a[hreflang]");if(a)try{localStorage.setItem("lang",a.hreflang);}catch(x){}});})();
 </script>
 </body>
 </html>
