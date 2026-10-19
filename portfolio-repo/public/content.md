@@ -14,7 +14,7 @@
 
 [overview-01] Optimizing the future of smart buildings
 [overview-02] Selected product work
-[overview-03] Senior Product Manager, IoT & Energy
+[overview-03] Senior Product Manager, IoT, Smart Energy & Applied AI
 [overview-04] I build connected heating and energy products, from a funded start-up to a platform running in hundreds of buildings.
 [overview-05] See my AI projects
 [overview-06] Get in touch
@@ -339,7 +339,7 @@
 [contact-06] Name
 [contact-07] Anand Narasipuram
 [contact-08] Role
-[contact-09] Senior Product Manager, IoT & Energy
+[contact-09] Senior Product Manager, IoT, Smart Energy & Applied AI
 [contact-10] Based in
 [contact-11] Frankfurt, Germany
 [contact-12] Virtual coffee
