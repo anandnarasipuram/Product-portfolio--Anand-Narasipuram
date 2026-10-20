@@ -493,7 +493,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 .subnav a[aria-current="true"] { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
 .short { margin-top: 14px; padding: 12px 16px; border-left: 3px solid var(--accent); background: color-mix(in srgb, var(--accent) 6%, transparent); max-width: 62ch; }
 .short b { display: block; margin-bottom: 2px; font-family: var(--note); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
-.sec[id], .sec .cols > [id] { scroll-margin-top: calc(var(--barh, 64px) + 64px); }
+.sec[id], .sec .cols > [id], .proj[id] { scroll-margin-top: calc(var(--barh, 64px) + 64px); }
 @media (max-width: 760px) { .subnav.hide { transform: translateY(-100%); } }
 @media (prefers-reduced-motion: reduce) { .subnav { transition: none; } }
 </style>
@@ -932,9 +932,18 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
     </figure>
   </div>
 
+  <nav class="subnav" aria-label="On this page">
+    <a href="#ai-projects/heat-pump" data-t="heat-pump">Heat Pump Copilot</a>
+    <a href="#ai-projects/book-bot" data-t="book-bot">Book Order Bot</a>
+    <a href="#ai-projects/launch-kit" data-t="launch-kit">Launch Kit</a>
+    <a href="#ai-projects/labs" data-t="labs">Agent labs</a>
+    <a href="#ai-projects/delivery-copilot" data-t="delivery-copilot">Delivery Copilot</a>
+    <a href="#ai-projects/portfolio-copilot" data-t="portfolio-copilot">Portfolio Copilot</a>
+  </nav>
+
   <h3 class="group-h">IRONHACK BOOTCAMP</h3>
 
-  <article class="proj">
+  <article class="proj" id="heat-pump">
     <div class="meta">Capstone<span>Individual, September 2026</span></div>
     <div>
       <h3>Heat Pump Copilot</h3>
@@ -949,7 +958,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
     </div>
   </article>
 
-  <article class="proj">
+  <article class="proj" id="book-bot">
     <div class="meta">Project 3<span>Individual, August 2026</span></div>
     <div>
       <h3>School Book Order Bot</h3>
@@ -959,7 +968,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
     </div>
   </article>
 
-  <article class="proj">
+  <article class="proj" id="launch-kit">
     <div class="meta">Project 2<span>Team project, 2 days</span></div>
     <div>
       <h3>Feature Launch Kit</h3>
@@ -969,7 +978,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
     </div>
   </article>
 
-  <article class="proj">
+  <article class="proj" id="labs">
     <div class="meta">Agent labs<span>July to September 2026</span></div>
     <div>
       <h3>Agents, RAG and automation labs</h3>
@@ -980,7 +989,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 
   <h3 class="group-h">BUILT FOR INTERVIEWS</h3>
 
-  <article class="proj">
+  <article class="proj" id="delivery-copilot">
     <div class="meta">Product manager, energy market<span>Interview showcase, 2026</span></div>
     <div>
       <h3>Delivery Lifecycle Diagnostics Copilot</h3>
@@ -991,7 +1000,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
     </div>
   </article>
 
-  <article class="proj">
+  <article class="proj" id="portfolio-copilot">
     <div class="meta">Product portfolio management<span>Interview showcase, 2026</span></div>
     <div>
       <h3>Portfolio Copilot</h3>
