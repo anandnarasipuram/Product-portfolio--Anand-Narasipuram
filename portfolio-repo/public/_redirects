@@ -1,0 +1,5 @@
+# The AI projects tab used to have its own copy of the site. Old links now open the tab on the main page.
+/projects            /#ai-projects     301
+/projects.html       /#ai-projects     301
+/de/projects         /de/#ai-projects  301
+/de/projects.html    /de/#ai-projects  301
