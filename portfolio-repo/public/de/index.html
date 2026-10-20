@@ -458,6 +458,30 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 .bar .lang + .tabs { margin-left: 0; }
 .bar { position: relative; }
 @media (max-width: 1100px) { .lang { position: absolute; right: 0; top: 8px; margin: 0; } .bar .lang + .tabs { margin-left: calc(var(--gutter) * -1); } }
+.loop { --gx: 64px; --gy: 52px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gy) var(--gx); max-width: 560px; margin: 28px auto 0; padding: 0; list-style: none; }
+.loop li { position: relative; padding: 14px 16px; border: 1px solid currentColor; background: var(--bg); overflow-wrap: break-word; hyphens: manual; }
+.loop li.me { border: 1.5px solid var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--bg)); }
+.loop .role { display: block; margin-bottom: 4px; font-family: var(--note); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.loop b { display: block; font-family: var(--display); font-size: 1.125rem; line-height: 1.2; }
+.loop .sub { display: block; margin-top: 2px; font-size: 0.875rem; color: var(--muted); text-transform: none; letter-spacing: normal; font-weight: 400; }
+.loop .n1 { grid-area: 1 / 1; } .loop .n2 { grid-area: 1 / 2; } .loop .n3 { grid-area: 2 / 2; } .loop .n4 { grid-area: 2 / 1; }
+.loop li::before, .loop li::after { content: ""; position: absolute; pointer-events: none; }
+/* arrow heads */
+.loop li::before { width: 8px; height: 8px; border-top: 1.4px solid currentColor; border-right: 1.4px solid currentColor; }
+/* n1 → right */
+.loop .n1::after { left: 100%; top: 50%; width: var(--gx); border-top: 1.2px solid currentColor; }
+.loop .n1::before { left: calc(100% + var(--gx) - 7px); top: 50%; transform: translateY(-50%) rotate(45deg); }
+/* n2 → down */
+.loop .n2::after { left: 50%; top: 100%; height: var(--gy); border-left: 1.2px solid currentColor; }
+.loop .n2::before { left: 50%; top: calc(100% + var(--gy) - 7px); transform: translateX(-50%) rotate(135deg); }
+/* n3 → left */
+.loop .n3::after { right: 100%; top: 50%; width: var(--gx); border-top: 1.2px solid currentColor; }
+.loop .n3::before { right: calc(100% + var(--gx) - 7px); top: 50%; transform: translateY(-50%) rotate(225deg); }
+/* n4 → up to E.ON One: dashed accent = "reports back" */
+.loop .n4::after { left: 50%; bottom: 100%; height: var(--gy); border-left: 1.5px dashed var(--accent); }
+.loop .n4::before { left: 50%; bottom: calc(100% + var(--gy) - 7px); transform: translateX(-50%) rotate(315deg); border-color: var(--accent); border-width: 1.6px; }
+.loop-cap { max-width: 560px; margin: 14px auto 0; text-align: center; font-family: var(--note); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+@media (max-width: 480px) { .loop { --gx: 28px; --gy: 44px; } .loop li { padding: 12px 12px; } .loop b { font-size: 1.0625rem; } }
 </style>
 </head>
 <body>
@@ -730,6 +754,22 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 <li><b>Geschäftsmodell.</b> Vom einmaligen Hardwareverkauf zu einem gemeinsam betriebenen Angebot.</li>
 <li><b>Meine Verantwortung.</b> Produktplanung, technischer Support, Geschäftsmodell und rechtliche Abstimmung auf Seiten von E.ON, mit Unterstützung aus Vertrieb, Marketing und Betrieb.</li>
 </ul>
+</div>
+<div class="sec" id="installs">
+<h3 class="sub-h">Installationen über ein Partnernetzwerk skalieren</h3>
+<p style="margin-top:14px">Um IHC in Hunderte von Gebäuden zu bringen, habe ich <b>Roamler</b> ins Boot geholt, dessen bundesweites Netzwerk über <b>200+ Installateure</b> umfasst, und diese darin geschult, die Box im Keller von Mehrfamilienhäusern zu installieren. Anschließend habe ich den Workflow entworfen, mit dem vier Unternehmen Installationen gemeinsam durchführen.</p>
+<dl class="stats">
+<div><dt class="rust">200+</dt><dd>Installateure im Partnernetzwerk, geschult auf die IHC-Box</dd></div>
+<div><dt>4</dt><dd>Unternehmen, die als ein Lieferteam arbeiten</dd></div>
+</dl>
+<ol aria-label="Installationskreislauf: E.ON One übergibt an Lemonbeat, dann an die Installateure von Roamler, die beim Kunden installieren und an E.ON One zurückmelden." class="loop">
+<li class="n1 me"><span class="role">Steuerung</span><b>E.ON One</b><span class="sub">Meine Rolle</span></li>
+<li class="n2"><span class="role">Technologie</span><b>Lemonbeat</b><span class="sub">Technischer Support</span></li>
+<li class="n3"><span class="role">Feld</span><b>Roamler</b><span class="sub">200+ Installateure</span></li>
+<li class="n4"><span class="role">Kunde</span><b>Wohnungs&shy;wirtschaft</b><span class="sub">Mehrfamilien&shy;häuser</span></li>
+</ol>
+<p class="loop-cap">Installateure melden an E.ON One zurück</p>
+<p style="margin-top:14px">Vier Organisationen, unterschiedliche Systeme und Ziele, ein geschlossener Kreislauf mit klarem Verantwortlichen für jede Übergabe.</p>
 </div>
 <div class="sec">
 <h3 class="sub-h">Vier Geschäftsmodelle, die ich entworfen habe</h3>
