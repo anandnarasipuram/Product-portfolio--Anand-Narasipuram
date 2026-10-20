@@ -486,6 +486,16 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 .loop .n4::before { left: 50%; bottom: calc(100% + var(--gy) - 7px); transform: translateX(-50%) rotate(315deg); border-color: var(--accent); border-width: 1.6px; }
 .loop-cap { max-width: 560px; margin: 14px auto 0; text-align: center; font-family: var(--note); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
 @media (max-width: 480px) { .loop { --gx: 28px; --gy: 44px; } .loop li { padding: 12px 12px; } .loop b { font-size: 1.0625rem; } }
+.subnav { position: sticky; top: var(--barh, 64px); z-index: 20; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; background: var(--bg); border-bottom: 1px solid var(--rule); margin-inline: calc(var(--gutter) * -1); padding: 10px var(--gutter); transition: transform .2s ease; }
+.subnav::-webkit-scrollbar { display: none; }
+.subnav a { flex: none; font-family: var(--note); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; color: var(--muted); border: 1px solid var(--rule); padding: 7px 12px; border-radius: 999px; white-space: nowrap; }
+.subnav a:hover { color: inherit; border-color: currentColor; }
+.subnav a[aria-current="true"] { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.short { margin-top: 14px; padding: 12px 16px; border-left: 3px solid var(--accent); background: color-mix(in srgb, var(--accent) 6%, transparent); max-width: 62ch; }
+.short b { display: block; margin-bottom: 2px; font-family: var(--note); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.sec[id], .sec .cols > [id] { scroll-margin-top: calc(var(--barh, 64px) + 64px); }
+@media (max-width: 760px) { .subnav.hide { transform: translateY(-100%); } }
+@media (prefers-reduced-motion: reduce) { .subnav { transition: none; } }
 </style>
 </head>
 <body>
@@ -626,6 +636,12 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
   <span class="stage">0 → 1</span>
   <h2 id="h-smart">SmartHome Configurator <span class="co">(Smartivate)</span></h2>
   <p class="lede">Co-founder and Product Lead, 2018 to present. I built Germany's first IoT SaaS configurator, designed to remove smart home fragmentation and speed up energy efficiency.</p>
+  <p class="short"><b>In short</b>Co-founder and Product Lead of Germany's first cross-brand IoT SaaS configurator: 450+ plug-and-play devices mapped for compatibility, 2,500+ users, EXIST-funded.</p>
+  <nav class="subnav" aria-label="On this page">
+    <a href="#smartivate/pcms" data-t="pcms">PCMS engine</a>
+    <a href="#smartivate/b2b2c" data-t="b2b2c">Business model</a>
+    <a href="#smartivate/funding" data-t="funding">Funding &amp; growth</a>
+  </nav>
   <div class="links"><a href="https://smartivate.co/classic/" target="_blank" rel="noopener">Try the configurator</a><a href="https://smartivate.de/" target="_blank" rel="noopener">Visit smartivate.de</a></div>
 
   <div class="scroll">
@@ -639,7 +655,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
     </table>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="pcms">
     <h3 class="sub-h">The PCMS engine</h3>
     <div class="cols">
       <div class="c-7">
@@ -657,7 +673,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
     </div>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="b2b2c">
     <h3 class="sub-h">A B2B2C business model</h3>
     <div class="parties">
       <div>
@@ -678,7 +694,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
     </div>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="funding">
     <h3 class="sub-h">Funding, testing and growth</h3>
     <ul class="points">
       <li><b>Funding.</b> Awarded €130k EXIST pre-seed funding from the Federal Ministry (BMWi), plus four accelerators including AXEL Energy Accelerator.</li>
@@ -694,6 +710,13 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
   <span class="stage">1 → N</span>
   <h2 id="h-upo">EcoMate <span class="co">(Uponor)</span></h2>
   <p class="lede">Product Manager, IoT and Digital Services, July 2021 to July 2023, Frankfurt. I worked on connected building products for three European markets, from sensor pilots in real buildings to a business model that costs the customer nothing up front.</p>
+  <p class="short"><b>In short</b>Product management for sensor-based heating optimisation across Germany, Spain and Denmark: pilots in multi-family, mixed and commercial buildings and a savings-share model with no customer CAPEX.</p>
+  <nav class="subnav" aria-label="On this page">
+    <a href="#uponor/loop" data-t="loop">Closed loop</a>
+    <a href="#uponor/pilots" data-t="pilots">Pilots</a>
+    <a href="#uponor/market" data-t="market">Market &amp; model</a>
+    <a href="#uponor/delivery" data-t="delivery">Delivery &amp; team</a>
+  </nav>
   <div class="cols">
     <div class="c-7">
       <h3 class="block-title">Optimising heating with sensors</h3>
@@ -711,7 +734,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
   </div>
 
   <div class="sec"><div class="cols top" style="margin-top:0">
-  <div class="c-7">
+  <div class="c-7" id="loop">
     <h3 class="sub-h">How the closed loop works</h3>
     <ol class="flow" style="margin-top:18px;max-width:62ch">
       <li><b>01 · Boiler</b>Sensors in the basement, connected to the boiler, measure and optimise heating energy consumption.</li>
@@ -720,13 +743,13 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
       <li><b>04 · Result</b>Higher energy efficiency of the building, without changing how tenants live.</li>
     </ol>
   </div>
-  <div class="c-5">
+  <div class="c-5" id="pilots">
     <h3 class="sub-h">Pilots across building types</h3>
     <p style="margin-top:14px">We ran pilots in multi-family houses, mixed-use buildings and commercial buildings. They achieved a heating energy optimisation of 12–15% as a start, which gave us evidence from three very different building types rather than one.</p>
   </div></div></div>
 
   <div class="sec"><div class="cols top" style="margin-top:0">
-  <div class="c-7">
+  <div class="c-7" id="market">
     <h3 class="sub-h">Market analysis and business model</h3>
     <ul class="points">
       <li><b>Competitive analysis.</b> I ran a rigorous competitive analysis to understand how the market works, and developed the business models from it.</li>
@@ -734,7 +757,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
       <li><b>No CAPEX for the customer.</b> The customer pays nothing up front. The cost is covered from savings that are measured, so the incentives of both sides point the same way.</li>
     </ul>
   </div>
-  <div class="c-5">
+  <div class="c-5" id="delivery">
     <h3 class="sub-h">Delivery and team</h3>
     <ul class="points">
       <li><b>Remoni KPIs.</b> Worked with the Remoni development and sensor teams to define the KPIs shown in the web app's frontend, and coordinated with Remoni stakeholders in Denmark.</li>
@@ -750,6 +773,13 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
   <span class="stage">1 → N</span>
   <h2 id="h-eon">Intelligent Heating Control, IHC <span class="co">(E.ON One)</span></h2>
   <p class="lede">Product Manager, Intelligent Heating Control (IHC), August 2023 to March 2026, Essen. I took start-up speed into corporate scale, aimed at the €3B building energy problem.</p>
+  <p class="short"><b>In short</b>Product Manager for IHC at E.ON One: four business models, a Danfoss partnership, a 200+ installer network and a fail-safe rollout.</p>
+  <nav class="subnav" aria-label="On this page">
+    <a href="#eon/danfoss" data-t="danfoss">Danfoss</a>
+    <a href="#eon/installs" data-t="installs">Partner network</a>
+    <a href="#eon/models" data-t="models">Business models</a>
+    <a href="#eon/failsafe" data-t="failsafe">Fail-safe</a>
+  </nav>
   <div class="cols">
     <div class="c-7">
       <h3 class="block-title">Intelligent Heating Control</h3>
@@ -766,7 +796,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
     </figure>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="danfoss">
     <h3 class="sub-h">The Danfoss Leanheat partnership</h3>
     <ul class="points">
       <li><b>Split of work.</b> E.ON One supplied the IHC boxes. Danfoss Leanheat's AI algorithm optimised heating energy for district heating, gas and oil boilers in Germany.</li>
@@ -793,7 +823,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
     <p style="margin-top:14px">Four organisations, different systems and goals, one closed loop with a clear owner for every handover.</p>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="models">
     <h3 class="sub-h">Four business models I designed</h3>
     <p style="margin-top:14px">I designed and tested four ways to bring Intelligent Heating Control to market, so the choice of model came from evidence rather than assumption.</p>
     <ol class="models">
@@ -804,7 +834,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
     </ol>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="failsafe">
     <h3 class="sub-h">Built to fail safely</h3>
     <p style="margin-top:14px">If the IHC box loses its connection, it switches to bypass mode. The outdoor temperature sensor signal passes straight to the heating system, so tenants keep their heating.</p>
     <p style="margin-top:14px">Alongside the Danfoss teams, I worked with E.ON's own engineering team on product development, and navigated EU energy regulation (GEG, EnWG) to launch the enterprise SaaS. The work earned the Best of Technology Award 2024, shown in the <a href="#credentials">Credentials</a> tab.</p>
@@ -1097,7 +1127,7 @@ async function mountFigures(id) {
 }
 
 function show(first) {
-  const wanted = location.hash.replace("#", "");
+  const [wanted, section] = location.hash.replace("#", "").split("/");
   const id = ids.includes(wanted) ? wanted : startId;
   panels.forEach((p) => p.classList.toggle("on", p.id === id));
   tabs.forEach((a) => {
@@ -1105,11 +1135,82 @@ function show(first) {
     if (on) { a.setAttribute("aria-current", "page"); }
     else a.removeAttribute("aria-current");
   });
-  if (!first) window.scrollTo(0, 0);
+  const target = section && document.getElementById(section);
+  if (target && document.getElementById(id).contains(target)) goToSection(target, first);
+  else if (!first) window.scrollTo(0, 0);
   mountFigures(id);
+}
+/* in-page section links: #tab/section */
+function goToSection(el, instant) {
+  const smooth = !instant && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  requestAnimationFrame(() => el.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" }));
 }
 window.addEventListener("hashchange", () => show(false));
 show(true);
+
+/* in-page section navigation */
+(function () {
+  const bw = document.querySelector(".bar-wrap");
+  const setBar = () => document.documentElement.style.setProperty("--barh", bw.offsetHeight + "px");
+  setBar(); addEventListener("resize", setBar); addEventListener("load", setBar);
+  const phone = matchMedia("(max-width: 760px)");
+  const visiblePanel = () => document.querySelector(".panel.on") || null;
+  function setActive(nav, chip) {
+    nav.querySelectorAll("a").forEach((a) => { if (a === chip) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+    if (chip) nav.scrollLeft = chip.offsetLeft - (nav.clientWidth - chip.offsetWidth) / 2;
+  }
+  document.querySelectorAll(".subnav").forEach((nav) => nav.addEventListener("click", (e) => {
+    const chip = e.target.closest("a[data-t]");
+    const target = chip && document.getElementById(chip.dataset.t);
+    if (!target) return;
+    e.preventDefault();
+    history.replaceState(null, "", "#" + nav.closest(".panel").id + "/" + chip.dataset.t);
+    document.querySelectorAll("#lang a").forEach((a) => { a.hash = location.hash; });
+    clickedAt = Date.now();
+    setActive(nav, chip);
+    goToSection(target, false);
+  }));
+  let lastY = scrollY, ticking = false, armed = false, clickedAt = 0;
+  function spy() {
+    ticking = false;
+    const panel = visiblePanel(), nav = panel && panel.querySelector(".subnav");
+    const y = scrollY, dy = y - lastY;
+    if (nav) {
+      if (!armed) lastY = y;
+      else if (phone.matches && dy > 8) { nav.classList.add("hide"); lastY = y; }
+      else if (dy < 0 || y <= 0 || !phone.matches) { nav.classList.remove("hide"); lastY = y; }
+      const chips = [...nav.querySelectorAll("a[data-t]")];
+      const line = innerHeight * 0.4;
+      let pick = null, pickTop = null;
+      chips.forEach((chip) => {
+        const t = document.getElementById(chip.dataset.t);
+        if (!t) return;
+        const top = t.getBoundingClientRect().top;
+        if (top >= line) return;
+        const sameRow = pickTop !== null && Math.abs(top - pickTop) < 2;
+        if (!sameRow || chip.getAttribute("aria-current") === "true") { if (!sameRow || pick.getAttribute("aria-current") !== "true") pick = chip; }
+        pickTop = top;
+      });
+      const current = nav.querySelector('a[aria-current="true"]');
+      const atBottom = innerHeight + y >= document.documentElement.scrollHeight - 2;
+      if (atBottom && Date.now() - clickedAt > 1500) {
+        const seen = chips.filter((c) => { const t = document.getElementById(c.dataset.t); return t && t.getBoundingClientRect().top < innerHeight - 40; });
+        if (seen.length) pick = seen[seen.length - 1];
+      }
+      if (pick !== current && Date.now() - clickedAt > 1500) setActive(nav, pick);
+    } else lastY = y;
+  }
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+  addEventListener("hashchange", () => requestAnimationFrame(spy));
+  addEventListener("load", () => {
+    const [tab, section] = location.hash.replace("#", "").split("/");
+    const el = section && document.getElementById(section);
+    if (el && document.getElementById(tab) && document.getElementById(tab).contains(el)) el.scrollIntoView({ block: "start" });
+    lastY = scrollY; armed = true;
+    spy();
+  });
+  spy();
+})();
 
 /* journey motion */
 (function () {

@@ -482,6 +482,16 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 .loop .n4::before { left: 50%; bottom: calc(100% + var(--gy) - 7px); transform: translateX(-50%) rotate(315deg); border-color: var(--accent); border-width: 1.6px; }
 .loop-cap { max-width: 560px; margin: 14px auto 0; text-align: center; font-family: var(--note); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
 @media (max-width: 480px) { .loop { --gx: 28px; --gy: 44px; } .loop li { padding: 12px 12px; } .loop b { font-size: 1.0625rem; } }
+.subnav { position: sticky; top: var(--barh, 64px); z-index: 20; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; background: var(--bg); border-bottom: 1px solid var(--rule); margin-inline: calc(var(--gutter) * -1); padding: 10px var(--gutter); transition: transform .2s ease; }
+.subnav::-webkit-scrollbar { display: none; }
+.subnav a { flex: none; font-family: var(--note); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; color: var(--muted); border: 1px solid var(--rule); padding: 7px 12px; border-radius: 999px; white-space: nowrap; }
+.subnav a:hover { color: inherit; border-color: currentColor; }
+.subnav a[aria-current="true"] { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.short { margin-top: 14px; padding: 12px 16px; border-left: 3px solid var(--accent); background: color-mix(in srgb, var(--accent) 6%, transparent); max-width: 62ch; }
+.short b { display: block; margin-bottom: 2px; font-family: var(--note); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.sec[id], .sec .cols > [id] { scroll-margin-top: calc(var(--barh, 64px) + 64px); }
+@media (max-width: 760px) { .subnav.hide { transform: translateY(-100%); } }
+@media (prefers-reduced-motion: reduce) { .subnav { transition: none; } }
 </style>
 </head>
 <body>
@@ -615,6 +625,12 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 <span class="stage">0 → 1</span>
 <h2 id="h-smart">SmartHome-Konfigurator <span class="co">(Smartivate)</span></h2>
 <p class="lede">Mitgründer und Product Lead, 2018 bis heute. Ich habe Deutschlands ersten IoT-SaaS-Konfigurator aufgebaut, um die Fragmentierung im Smart Home abzubauen und Energieeffizienz schneller voranzubringen.</p>
+<p class="short"><b>Kurz gesagt</b>Mitgründer und Product Lead des ersten markenübergreifenden IoT-SaaS-Konfigurators in Deutschland: 450+ Plug-and-play-Geräte auf Kompatibilität geprüft, 2.500+ Nutzer, EXIST-gefördert.</p>
+<nav class="subnav" aria-label="Auf dieser Seite">
+  <a href="#smartivate/pcms" data-t="pcms">PCMS-Engine</a>
+  <a href="#smartivate/b2b2c" data-t="b2b2c">Geschäftsmodell</a>
+  <a href="#smartivate/funding" data-t="funding">Förderung &amp; Wachstum</a>
+</nav>
 <div class="links"><a href="https://smartivate.co/classic/" target="_blank" rel="noopener">Konfigurator ausprobieren</a><a href="https://smartivate.de/" target="_blank" rel="noopener">Zu smartivate.de</a></div>
 <div class="scroll">
 <table>
@@ -626,7 +642,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 </tbody>
 </table>
 </div>
-<div class="sec">
+<div class="sec" id="pcms">
 <h3 class="sub-h">Die PCMS-Engine</h3>
 <div class="cols">
 <div class="c-7">
@@ -643,7 +659,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 </figure>
 </div>
 </div>
-<div class="sec">
+<div class="sec" id="b2b2c">
 <h3 class="sub-h">Ein B2B2C-Geschäftsmodell</h3>
 <div class="parties">
 <div>
@@ -663,7 +679,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 </div>
 </div>
 </div>
-<div class="sec">
+<div class="sec" id="funding">
 <h3 class="sub-h">Förderung, Tests und Wachstum</h3>
 <ul class="points">
 <li><b>Förderung.</b> 130.000 € EXIST-Gründerstipendium vom Bundesministerium (BMWi) erhalten, dazu vier Accelerator-Programme, darunter AXEL Energie-Accelerator.</li>
@@ -678,6 +694,13 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 <span class="stage">1 → N</span>
 <h2 id="h-upo">EcoMate <span class="co">(Uponor)</span></h2>
 <p class="lede">Product Manager, IoT und Digital Services, Juli 2021 bis Juli 2023, Frankfurt. Ich habe an vernetzten Gebäudeprodukten für drei europäische Märkte gearbeitet, von Sensor-Piloten in realen Gebäuden bis zu einem Geschäftsmodell, das den Kunden vorab nichts kostet.</p>
+<p class="short"><b>Kurz gesagt</b>Produktmanagement für sensorbasierte Heizungsoptimierung in Deutschland, Spanien und Dänemark: Pilotprojekte in Mehrfamilien-, Misch- und Gewerbegebäuden und ein Savings-Share-Modell ohne Kunden-CAPEX.</p>
+<nav class="subnav" aria-label="Auf dieser Seite">
+  <a href="#uponor/loop" data-t="loop">Regelkreis</a>
+  <a href="#uponor/pilots" data-t="pilots">Pilotprojekte</a>
+  <a href="#uponor/market" data-t="market">Markt &amp; Modell</a>
+  <a href="#uponor/delivery" data-t="delivery">Umsetzung &amp; Team</a>
+</nav>
 <div class="cols">
 <div class="c-7">
 <h3 class="block-title">Heizung mit Sensoren optimieren</h3>
@@ -694,7 +717,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 </figure>
 </div>
 <div class="sec"><div class="cols top" style="margin-top:0">
-<div class="c-7">
+<div class="c-7" id="loop">
 <h3 class="sub-h">So funktioniert der geschlossene Regelkreis</h3>
 <ol class="flow" style="margin-top:18px;max-width:62ch">
 <li><b>01 · Heizkessel</b>Sensoren im Keller, am Heizkessel angeschlossen, messen und optimieren den Heizenergieverbrauch.</li>
@@ -703,12 +726,12 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 <li><b>04 · Ergebnis</b>Höhere Energieeffizienz des Gebäudes, ohne dass sich der Alltag der Mieter ändert.</li>
 </ol>
 </div>
-<div class="c-5">
+<div class="c-5" id="pilots">
 <h3 class="sub-h">Pilotprojekte in verschiedenen Gebäudetypen</h3>
 <p style="margin-top:14px">Wir haben Pilotprojekte in Mehrfamilienhäusern, Mischgebäuden und Gewerbegebäuden durchgeführt. Sie erreichten zunächst eine Optimierung der Heizenergie von 12–15 %. Damit hatten wir Belege aus drei sehr unterschiedlichen Gebäudetypen statt nur aus einem.</p>
 </div></div></div>
 <div class="sec"><div class="cols top" style="margin-top:0">
-<div class="c-7">
+<div class="c-7" id="market">
 <h3 class="sub-h">Marktanalyse und Geschäftsmodell</h3>
 <ul class="points">
 <li><b>Wettbewerbsanalyse.</b> Ich habe eine gründliche Wettbewerbsanalyse durchgeführt, um zu verstehen, wie der Markt funktioniert, und daraus die Geschäftsmodelle entwickelt.</li>
@@ -716,7 +739,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 <li><b>Kein CAPEX für den Kunden.</b> Der Kunde zahlt vorab nichts. Die Kosten werden aus gemessenen Einsparungen gedeckt, sodass die Interessen beider Seiten in dieselbe Richtung zeigen.</li>
 </ul>
 </div>
-<div class="c-5">
+<div class="c-5" id="delivery">
 <h3 class="sub-h">Umsetzung und Team</h3>
 <ul class="points">
 <li><b>Remoni-KPIs.</b> Gemeinsam mit den Remoni-Entwicklungs- und Sensorteams die KPIs für das Frontend der Web-App definiert und mit Remoni-Stakeholdern in Dänemark abgestimmt.</li>
@@ -731,6 +754,13 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 <span class="stage">1 → N</span>
 <h2 id="h-eon">Intelligent Heating Control, IHC <span class="co">(E.ON One)</span></h2>
 <p class="lede">Product Manager, Intelligent Heating Control (IHC), August 2023 bis März 2026, Essen. Ich habe Start-up-Tempo in den Konzern getragen, ausgerichtet auf das 3-Mrd.-€-Problem der Gebäudeenergie.</p>
+<p class="short"><b>Kurz gesagt</b>Product Manager für IHC bei E.ON One: vier Geschäftsmodelle, eine Danfoss-Partnerschaft, ein Netzwerk von 200+ Installateuren und ein ausfallsicherer Rollout.</p>
+<nav class="subnav" aria-label="Auf dieser Seite">
+  <a href="#eon/danfoss" data-t="danfoss">Danfoss</a>
+  <a href="#eon/installs" data-t="installs">Partnernetzwerk</a>
+  <a href="#eon/models" data-t="models">Geschäftsmodelle</a>
+  <a href="#eon/failsafe" data-t="failsafe">Ausfallsicher</a>
+</nav>
 <div class="cols">
 <div class="c-7">
 <h3 class="block-title">Intelligent Heating Control</h3>
@@ -746,7 +776,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 <figcaption aria-hidden="true" id="cap-plug"><span>Energie, Verbindung für Verbindung.</span> <span class="read"></span></figcaption>
 </figure>
 </div>
-<div class="sec">
+<div class="sec" id="danfoss">
 <h3 class="sub-h">Die Partnerschaft mit Danfoss Leanheat</h3>
 <ul class="points">
 <li><b>Aufgabenteilung.</b> E.ON One lieferte die IHC-Boxen. Der KI-Algorithmus von Danfoss Leanheat optimierte die Heizenergie für Fernwärme, Gas- und Ölkessel in Deutschland.</li>
@@ -771,7 +801,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 <p class="loop-cap">Installateure melden an E.ON One zurück</p>
 <p style="margin-top:14px">Vier Organisationen, unterschiedliche Systeme und Ziele, ein geschlossener Kreislauf mit klarem Verantwortlichen für jede Übergabe.</p>
 </div>
-<div class="sec">
+<div class="sec" id="models">
 <h3 class="sub-h">Vier Geschäftsmodelle, die ich entworfen habe</h3>
 <p style="margin-top:14px">Ich habe vier Wege entworfen und getestet, Intelligent Heating Control an den Markt zu bringen, damit die Wahl des Modells auf Evidenz statt auf Annahmen beruhte.</p>
 <ol class="models">
@@ -781,7 +811,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); font-famil
 <li><span class="no">MODEL 04</span><h4>Gemeinsames Modell mit Danfoss Leanheat</h4><p>Unsere Hardware und Feldeinsätze, ihr Optimierungsalgorithmus, anstelle eines einmaligen Hardwareverkaufs.</p><span class="tag">Gemeinsames Angebot</span></li>
 </ol>
 </div>
-<div class="sec">
+<div class="sec" id="failsafe">
 <h3 class="sub-h">Ausfallsicher gebaut</h3>
 <p style="margin-top:14px">Verliert die IHC-Box ihre Verbindung, schaltet sie in den Bypass-Modus. Das Signal des Außentemperaturfühlers geht direkt an die Heizungsanlage, sodass die Mieter ihre Heizung behalten.</p>
 <p style="margin-top:14px">Neben den Danfoss-Teams habe ich mit dem E.ON-eigenen Engineering-Team an der Produktentwicklung gearbeitet und mich durch die EU-Energieregulierung (GEG, EnWG) bewegt, um die Enterprise-SaaS zu starten. Die Arbeit wurde mit dem Best of Technology Award 2024 ausgezeichnet, zu sehen im Tab <a href="#credentials">Qualifikationen</a>.</p>
@@ -1057,7 +1087,7 @@ async function mountFigures(id) {
 }
 
 function show(first) {
-  const wanted = location.hash.replace("#", "");
+  const [wanted, section] = location.hash.replace("#", "").split("/");
   const id = ids.includes(wanted) ? wanted : startId;
   panels.forEach((p) => p.classList.toggle("on", p.id === id));
   tabs.forEach((a) => {
@@ -1065,11 +1095,82 @@ function show(first) {
     if (on) { a.setAttribute("aria-current", "page"); }
     else a.removeAttribute("aria-current");
   });
-  if (!first) window.scrollTo(0, 0);
+  const target = section && document.getElementById(section);
+  if (target && document.getElementById(id).contains(target)) goToSection(target, first);
+  else if (!first) window.scrollTo(0, 0);
   mountFigures(id);
+}
+/* in-page section links: #tab/section */
+function goToSection(el, instant) {
+  const smooth = !instant && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  requestAnimationFrame(() => el.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" }));
 }
 window.addEventListener("hashchange", () => show(false));
 show(true);
+
+/* in-page section navigation */
+(function () {
+  const bw = document.querySelector(".bar-wrap");
+  const setBar = () => document.documentElement.style.setProperty("--barh", bw.offsetHeight + "px");
+  setBar(); addEventListener("resize", setBar); addEventListener("load", setBar);
+  const phone = matchMedia("(max-width: 760px)");
+  const visiblePanel = () => document.querySelector(".panel.on") || null;
+  function setActive(nav, chip) {
+    nav.querySelectorAll("a").forEach((a) => { if (a === chip) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+    if (chip) nav.scrollLeft = chip.offsetLeft - (nav.clientWidth - chip.offsetWidth) / 2;
+  }
+  document.querySelectorAll(".subnav").forEach((nav) => nav.addEventListener("click", (e) => {
+    const chip = e.target.closest("a[data-t]");
+    const target = chip && document.getElementById(chip.dataset.t);
+    if (!target) return;
+    e.preventDefault();
+    history.replaceState(null, "", "#" + nav.closest(".panel").id + "/" + chip.dataset.t);
+    document.querySelectorAll("#lang a").forEach((a) => { a.hash = location.hash; });
+    clickedAt = Date.now();
+    setActive(nav, chip);
+    goToSection(target, false);
+  }));
+  let lastY = scrollY, ticking = false, armed = false, clickedAt = 0;
+  function spy() {
+    ticking = false;
+    const panel = visiblePanel(), nav = panel && panel.querySelector(".subnav");
+    const y = scrollY, dy = y - lastY;
+    if (nav) {
+      if (!armed) lastY = y;
+      else if (phone.matches && dy > 8) { nav.classList.add("hide"); lastY = y; }
+      else if (dy < 0 || y <= 0 || !phone.matches) { nav.classList.remove("hide"); lastY = y; }
+      const chips = [...nav.querySelectorAll("a[data-t]")];
+      const line = innerHeight * 0.4;
+      let pick = null, pickTop = null;
+      chips.forEach((chip) => {
+        const t = document.getElementById(chip.dataset.t);
+        if (!t) return;
+        const top = t.getBoundingClientRect().top;
+        if (top >= line) return;
+        const sameRow = pickTop !== null && Math.abs(top - pickTop) < 2;
+        if (!sameRow || chip.getAttribute("aria-current") === "true") { if (!sameRow || pick.getAttribute("aria-current") !== "true") pick = chip; }
+        pickTop = top;
+      });
+      const current = nav.querySelector('a[aria-current="true"]');
+      const atBottom = innerHeight + y >= document.documentElement.scrollHeight - 2;
+      if (atBottom && Date.now() - clickedAt > 1500) {
+        const seen = chips.filter((c) => { const t = document.getElementById(c.dataset.t); return t && t.getBoundingClientRect().top < innerHeight - 40; });
+        if (seen.length) pick = seen[seen.length - 1];
+      }
+      if (pick !== current && Date.now() - clickedAt > 1500) setActive(nav, pick);
+    } else lastY = y;
+  }
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+  addEventListener("hashchange", () => requestAnimationFrame(spy));
+  addEventListener("load", () => {
+    const [tab, section] = location.hash.replace("#", "").split("/");
+    const el = section && document.getElementById(section);
+    if (el && document.getElementById(tab) && document.getElementById(tab).contains(el)) el.scrollIntoView({ block: "start" });
+    lastY = scrollY; armed = true;
+    spy();
+  });
+  spy();
+})();
 
 /* journey motion */
 (function () {
