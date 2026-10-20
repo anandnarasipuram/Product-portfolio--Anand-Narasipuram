@@ -98,7 +98,7 @@
 [smartivate-10] A B2B2C business model
 [smartivate-11] B2B partners: real estate and utilities
 [smartivate-12] Pays a monthly SaaS subscription plus a setup fee.  (*)
-[smartivate-13] Traction 4 active B2B clients. A dedicated configurator for 8,000+ residents is in progress.  (*)
+[smartivate-13] Status A model I designed and tested in Smartivate's early years. It is no longer part of the business.  (*)
 [smartivate-14] Platform and retail partners
 [smartivate-15] Pays a 3 to 5% basket commission and €0.20 per click.  (*)
 [smartivate-16] Traction Lower product return rates thanks to guaranteed compatibility.  (*)
